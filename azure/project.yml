@@ -1,0 +1,8 @@
+variables:
+  - group: status-endpoint
+  - name: service_name
+    value: prescriptions-for-patients
+  - name: short_service_name
+    value: pfp
+  - name: service_base_path
+    value: prescriptions-for-patients
