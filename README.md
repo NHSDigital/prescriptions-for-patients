@@ -1,7 +1,5 @@
 # prescriptions-for-patients
 
-This is a test edit for branch pushing purposes.
-
 ![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Build/badge.svg?branch=master)
 
 This is a specification for the *prescriptions-for-patients* API.
