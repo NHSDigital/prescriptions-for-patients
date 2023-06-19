@@ -1,4 +1,4 @@
-<TargetEndpoint name="prescriptions-for-patients-target">
+<TargetEndpoint name="prescriptions-for-patients">
   <PreFlow>
     <Request>
       <Step>
@@ -35,9 +35,7 @@
   <HTTPTargetConnection>
     <URL>http://mocktarget.apigee.net</URL>
     <Properties>
-      <Property name="supports.http10">true</Property>
-      <Property name="request.retain.headers">User-Agent,Referer,Accept-Language</Property>
-      <Property name="retain.queryparams">apikey</Property>
+      <Property name="success.codes">1xx,2xx,3xx,4xx</Property>
     </Properties>
   </HTTPTargetConnection>
 </TargetEndpoint>
