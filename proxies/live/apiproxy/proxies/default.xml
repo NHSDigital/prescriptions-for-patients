@@ -66,8 +66,8 @@
   <RouteRule name="NoRouteStatus">
     <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))</Condition>
   </RouteRule>
-  <RouteRule name="prescriptions-for-patients-target">
-    <TargetEndpoint>prescriptions-for-patients-target</TargetEndpoint>
+  <RouteRule name="prescriptions-for-patients">
+    <TargetEndpoint>prescriptions-for-patients</TargetEndpoint>
   </RouteRule>
   <DefaultFaultRule>
     <Step>
