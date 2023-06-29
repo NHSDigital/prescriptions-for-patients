@@ -5,6 +5,9 @@
         <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
       </Step>
       <Step>
+        <Name>AssignMessage.AddPatientAccessHeader</Name>
+      </Step>  
+      <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
     </Request>
