@@ -8,8 +8,15 @@
         <Name>DecodeJWT.DecodeIdToken</Name>
       </Step>
       <Step>
+        <Name>javascript.RestrictRequest</Name>
+      </Step>
+      <Step>
+        <Name>RaiseFault.InvalidUserNHSlogin</Name>
+        <Condition>apigee.method_is_restricted Equals true</Condition>
+      </Step>
+      <Step>
         <Name>AssignMessage.AddPatientAccessHeader</Name>
-      </Step>  
+      </Step>
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
@@ -35,6 +42,6 @@
     </LoadBalancer>
   </HTTPTargetConnection> -->
   <HTTPTargetConnection>
-      <URL>https://pr-99.dev.prescriptionsforpatients.national.nhs.uk</URL>
+    <URL>https://pr-99.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
