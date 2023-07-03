@@ -8,13 +8,6 @@
         <Name>DecodeJWT.DecodeIdToken</Name>
       </Step>
       <Step>
-        <Name>javascript.RestrictRequest</Name>
-      </Step>
-      <Step>
-        <Name>RaiseFault.InvalidUserNHSlogin</Name>
-        <Condition>apigee.method_is_restricted Equals true</Condition>
-      </Step>
-      <Step>
         <Name>AssignMessage.AddPatientAccessHeader</Name>
       </Step>
       <Step>
