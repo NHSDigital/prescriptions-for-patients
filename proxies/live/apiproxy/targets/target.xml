@@ -26,15 +26,12 @@
       <Condition>oauthV2.OauthV2.VerifyAccessToken.failed</Condition>
     </FaultRule>
   </FaultRules>
-  <!-- <HTTPTargetConnection>
+  <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
     </SSLInfo>
     <LoadBalancer>
       <Server name="prescriptions-for-patients" />
     </LoadBalancer>
-  </HTTPTargetConnection> -->
-  <HTTPTargetConnection>
-    <URL>https://pr-99.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
