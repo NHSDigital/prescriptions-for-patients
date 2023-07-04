@@ -13,7 +13,7 @@
        <LoadBalancer>
            <Server name="prescriptions-for-patients" />
        </LoadBalancer>
-       <Path>/_ping</Path>
+       <Path>/_status</Path>
    </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
