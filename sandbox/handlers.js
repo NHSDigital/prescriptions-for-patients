@@ -36,10 +36,8 @@ const write_log = (res, log_level, options = {}) => {
 
 async function status(req, res, next) {
     res.json({
-        status: "pass",
-        ping: "pong",
-        service: req.app.locals.app_name,
-        version: req.app.locals.version_info
+        commitId: "1231231231231231231231231231231231231231",
+        versionNumber: "v1.2.34-sandbox"
     });
     res.end();
     next();
