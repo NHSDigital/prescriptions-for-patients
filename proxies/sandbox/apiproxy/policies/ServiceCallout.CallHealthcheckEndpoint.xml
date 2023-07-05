@@ -11,7 +11,7 @@
            <Enabled>true</Enabled>
        </SSLInfo>
        <LoadBalancer>
-           <Server name="prescriptions-for-patients-sandbox" />
+           <Server name="prescriptions-for-patients" />
        </LoadBalancer>
        <Path>/_status</Path>
    </HTTPTargetConnection>
