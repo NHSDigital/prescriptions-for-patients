@@ -6,8 +6,14 @@
         <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
     </Request>
     <Response>healthcheckResponse</Response>
-    <HTTPTargetConnection>
-        {{ HOSTED_TARGET_HEALTHCHECK }}
-    </HTTPTargetConnection>
+   <HTTPTargetConnection>
+       <SSLInfo>
+           <Enabled>true</Enabled>
+       </SSLInfo>
+       <LoadBalancer>
+           <Server name="prescriptions-for-patients-sandbox" />
+       </LoadBalancer>
+       <Path>/_status</Path>
+   </HTTPTargetConnection>
     <Timeout>20000</Timeout>
 </ServiceCallout>
