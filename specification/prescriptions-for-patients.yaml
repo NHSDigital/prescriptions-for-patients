@@ -73,7 +73,7 @@ info:
     | Internal Dev          | `https://internal-dev.api.service.nhs.uk/prescriptions-for-patients`          |
     | Internal Dev Sandbox  | `https://internal-dev-sandbox.api.service.nhs.uk/prescriptions-for-patients`  |
     | Internal QA           | `https://internal-qa.api.service.nhs.uk/prescriptions-for-patients`           |
-    | Ref                   | `https://ref.api.service.nhs.uk/prescriptions-for-patients`                   |
+    | Reference             | `https://ref.api.service.nhs.uk/prescriptions-for-patients`                   |
     | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                   |
     | Production            | Not yet available                                                             |
 
