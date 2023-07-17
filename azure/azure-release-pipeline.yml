@@ -70,4 +70,4 @@ extends:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
-              test_command: test-prod
+              test_command: 'make test-prod'
