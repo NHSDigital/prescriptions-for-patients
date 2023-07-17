@@ -78,5 +78,5 @@ smoketest-prod:
 	-m smoketest
 
 test-prod:
-	$(PROD_CMD) \
+	$(PROD_TEST_CMD) \
 	--junitxml=test-report.xml \
