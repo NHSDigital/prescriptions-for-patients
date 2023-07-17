@@ -68,5 +68,5 @@ extends:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
-              test-command: prod
-              smoketest-command: prod
+              test_command: prod
+              smoketest_command: prod
