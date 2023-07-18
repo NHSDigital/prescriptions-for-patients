@@ -1,7 +1,7 @@
 <AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage.OverridePatientAccessHeader">
   <Set>
       <Headers>
-          <Header name="NHSD-NHSLogin-User">P9:{original-request-details.header.X-NHS-NUMBER}</Header>
+          <Header name="NHSD-NHSLogin-User">P9:{request.header.X-NHS-NUMBER}</Header>
       </Headers>
   </Set>
   <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
