@@ -10,7 +10,7 @@
       <Step>
         <Name>AssignMessage.AddPatientAccessHeader</Name>
       </Step>
-      {% if ALLOW_NHS_NUMBER_OVERRIDE == 'True' %}
+      {% if ALLOW_NHS_NUMBER_OVERRIDE %}
       <Step>
         <Name>AssignMessage.OverridePatientAccessHeader</Name>
         <Condition>(original-request-details.header.X-NHS-NUMBER != null)</Condition>
