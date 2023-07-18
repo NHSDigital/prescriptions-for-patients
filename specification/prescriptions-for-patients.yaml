@@ -1,42 +1,282 @@
 # This is an OpenAPI Specification (https://swagger.io/specification/)
-# for prescriptions-for-patients owned by NHS Digital (https://digital.nhs.uk/)
-openapi: '3.0.0'
+# for the Prescriptions API
+# owned by NHS Digital (https://digital.nhs.uk/)
+
+openapi: 3.0.x
+x-nhs-api-spec-guid: 816f3e79-1d81-4ae7-af54-dcd4a739d01a
 info:
-  title: 'prescriptions-for-patients'
-  version: 'Computed and injected at build time by `scripts/set_version.py`'
+  title: Prescriptions for Patients API
+  version: "0.0.1"
+  contact:
+    name: Prescriptions for Patients API Support
+    url: https://digital.nhs.uk/developer/help-and-support
+    email: api.management@nhs.net
   description: |
     ## Overview
-    Test add for branch.
-    Add a fully fledged description here with markdown syntax.
-    For help completing the content of your API spec, see our guidance on the minimum standard (bronze) details 
-    to include [here](https://nhsd-confluence.digital.nhs.uk/display/APM/Writing+a+bronze+API+cover+page). You should also base your content on our exemplar API - [PDS FHIR](https://digital.nhs.uk/developer/api-catalogue/personal-demographics-service-fhir).
+    Use this API to retrieve prescriptions data for individual patients.
+    It is part of the [Electronic Prescription Service (EPS)](https://digital.nhs.uk/services/electronic-prescription-service).
+
+    EPS is the national service used to send electronic prescription messages between prescribers and community dispensers.
+
     ## Who can use this API
-    To be completed.
-    ## Related APIs
-    To be completed.
-    ## API status and roadmap
-    To be completed.
+    This API is intended for use by patient-facing applications, such as NHS App.
+    It can only be used where there is a legal basis to do so. Make sure you have a [valid use case](https://digital.nhs.uk/services/electronic-prescription-service/enabling-eps-for-your-service) before you go too far with your development. 
+
+    You must get approval before you can go live. For more information, see the 'Onboarding' section.
+
+    ## API status
+    This API is [in development](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#statuses), meaning the API is available for testing via a sandbox service or an integration environment - but we expect to make breaking changes based on developer feedback.
+
     ## Service level
-    To be completed.
+    This API is a silver service, meaning it is operational 24 x 7 x 365 but only supported during working hours.
+
+    For more details, see [service levels](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#service-levels).
+
     ## Technology
-    To be completed.
+    This API is [RESTful](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#basic-rest).
+
+    It conforms to the [FHIR](https://digital.nhs.uk/developer/guides-and-documentation/our-api-technologies#fhir) global standard for health care data exchange, specifically to [FHIR R4 (v4.0.1)](https://hl7.org/fhir/r4/), except that it does not support the [capabilities](http://hl7.org/fhir/R4/http.html#capabilities) interaction.
+
+    It includes some country-specific FHIR extensions, which are built against [FHIR UK Core, specifically [UKcore.stu1 0.5.1](https://simplifier.net/packages/fhir.r4.ukcore.stu1/0.5.1).
+
+    You do not need to know much about FHIR to use this API. The API only supports GET requests and the responses will be FHIR.
+
+    FHIR APIs are just RESTful APIs that follow specific rules. In particular:
+    * resource names are capitalised and singular, for example `/Bundle` not `/bundle`
+    * array names are singular, for example `line` not `lines` for address lines
+    * data items that are country-specific and thus not included in the FHIR global base resources are usually wrapped in an `extension` object
+
+    There are [libraries and software development kits available](https://digital.nhs.uk/developer/guides-and-documentation/api-technologies-at-nhs-digital#fhir-libraries-and-sdks) to help with FHIR API integration.
+
     ## Network access
-    To be completed.
+    This API is available on the internet and, indirectly, on the [Health and Social Care Network (HSCN)](https://digital.nhs.uk/services/health-and-social-care-network).
+
+    For more details see [Network access for APIs](https://digital.nhs.uk/developer/guides-and-documentation/network-access-for-apis).
+
     ## Security and authorisation
-    To be completed.
-    ## Environments and testing
-    To be completed.
+    This API is [user-restricted](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis), meaning an end user must be present, authenticated and authorised.
+
+    The end user must be:
+    * a patient who receives health and social care or makes use of NHS services
+    * strongly authenticated, using [NHS login](https://digital.nhs.uk/services/nhs-login)
+     
+    To use this API, use one of the following security patterns:
+    
+    |	Security pattern		                                                                                                                                                                                                          |	Technical details	                                  |	Advantages	                                                | Disadvantages                                           |
+    |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ----------------------------------------------------| ------------------------------------------------------------|---------------------------------------------------------|
+    |[NHS login - combined authentication and authorisation](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/user-restricted-restful-apis-nhs-login-combined-authentication-and-authorisation) |OAuth 2.0 authorisation code with API key and secret |No need to integrate and onboard separately with NHS login.  |No access to user information.                           |
+    |[NHS login - separate authentication and authorisation](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/user-restricted-restful-apis-nhs-login-separate-authentication-and-authorisation) |OAuth 2.0 token exchange with signed JWT             |Gives access to user information.                            |Need to integrate and onboard separately with NHS login. |
+
+    ## Environment and testing
+    | Environment           | Base URL                                                                      |
+    | --------------------- | ----------------------------------------------------------------------------- |
+    | Internal Dev          | `https://internal-dev.api.service.nhs.uk/prescriptions-for-patients`          |
+    | Internal Dev Sandbox  | `https://internal-dev-sandbox.api.service.nhs.uk/prescriptions-for-patients`  |
+    | Internal QA           | `https://internal-qa.api.service.nhs.uk/prescriptions-for-patients`           |
+    | Reference             | `https://ref.api.service.nhs.uk/prescriptions-for-patients`                   |
+    | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                   |
+    | Production            | Not yet available                                                             |
+
     ## Onboarding
-    To be completed.
-  contact:
-    name: 'prescriptions-for-patients API Support'
-    url: 'https://digital.nhs.uk/developer/help-and-support'
-    email: api.management@nhs.net
+    You need to get your software approved by us before it can go live with this API. We call this onboarding. The onboarding process can sometimes be quite long, so it is worth planning well ahead.
+    
+    To onboard for this API, follow the [Supplier Conformance Assessment List (SCAL)](https://digital.nhs.uk/developer/guides-and-documentation/onboarding-process#onboard-using-the-supplier-conformance-assessment-list-scal-process) process.
+    
+    To get started with the SCAL process for this API, [contact us](https://digital.nhs.uk/developer/help-and-support).
+    
+    ## Errors
+    ### API wide errors
+    | HTTP Status   | Error Code             | Description                                                                      |
+    | --------------| ---------------------- | -------------------------------------------------------------------------------- |
+    | 400           | BAD_REQUEST            | Invalid request.                                                                 |
+    | 404           | NOT_FOUND              | Resource not found.                                                              |
+
+    ### Platform wide errors
+    | HTTP Status   | Error Code            | Description                                                                                                                           |
+    | ------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+    | 401           | ACCESS_DENIED         | User does not have permission for a particular request.                                                                               |
+    | 403           | FORBIDDEN             | Insufficient authorization.                                                                                                           |
+    | 404           | NOT_FOUND             | Route not found.                                                                                                                      |
+    | 500           | INTERNAL SERVER ERROR | The server has encountered a situation it does not know how to handle.                                                                |
+
+    For further details on common error codes, see [HTTP status codes](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#http-status-codes)
+
+x-spec-publication:
+  operation-order:
+    - operations:
+        - method: GET
+          path: /Bundle
+
 servers:
-  - url: 'https://sandbox.api.service.nhs.uk/prescriptions-for-patients'
-    description: Sandbox environment.
-  - url: 'https://int.api.service.nhs.uk/prescriptions-for-patients'
-    description: Integration test environment.
-  - url: 'https://api.service.nhs.uk/prescriptions-for-patients'
-    description: Production environment.
-paths: {}
+  - url: "https://int.api.service.nhs.uk/prescriptions-for-patients"
+    description: "Integration"
+  - url: "https://api.service.nhs.uk/prescriptions-for-patients"
+    description: "Production"
+
+paths:
+  /Bundle:
+    get:
+      operationId: prescriptions-for-patients-bundle
+      summary: Get prescriptions
+      description: |
+        ## Overview
+        Use this endpoint to get a list of a patient's prescriptions, expressed as a FHIR Bundle.
+      parameters:
+        - $ref: "#/components/parameters/BearerAuthorisation"
+        - $ref: "#/components/parameters/RequestID"
+      responses:
+        "200":
+          description: Successful retrieval.
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/bundle-response"
+              examples:
+                prescriptions-present:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, containing one prescription.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/success.json
+                prescriptions-present-multiple:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, containing multiple prescriptions.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/success-multiple.json
+                prescriptions-not-present:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/success-empty.json
+        "4XX":
+          description: |
+            An error occurred as follows:
+
+            | HTTP status | Error code          | Description                                                                                                                               |
+            | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 400         | `exception`         | Missing or invalid NHS number in request                                                                                                  |
+            | 401         | `processing`        | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
+            | 404         | `not-found`         | No records found for the NHS number in the request                                                                                        |
+            | 408         | `timeout`           | Request timed out                                                                                                                         |
+            | 429         | `throttled`         | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            
+            The error code will be included in the returned OperationOutcome (below).
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/operation-outcome"
+              examples:
+                example:
+                  description: |
+                    An error response to a GetMyPrescriptions/Bundle request.
+                    Resource not found for the given NHS number.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/error.json
+
+components:
+  parameters:
+    BearerAuthorisation:
+      in: header
+      name: Authorization
+      description: |
+        An [OAuth 2.0 bearer token](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation#user-restricted-apis).
+      required: true
+      schema:
+        type: string
+        format: '^Bearer\ [[:ascii:]]+$'
+        example: "Bearer g1112R_ccQ1Ebbb4gtHBP1aaaNM"
+    RequestID:
+      in: header
+      name: X-Request-ID
+      required: true
+      description: |
+        A globally unique identifier (GUID) for the request, which we use to correlate logs through different components.
+        Must be a universally unique identifier (UUID) (ideally version 4).
+        Mirrored back in a response header.
+      schema:
+        type: string
+        pattern: "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+        example: 60E0B220-8136-4CA5-AE46-1D97EF59D068
+  schemas:
+    operation-outcome:
+      $ref: schemas/resources/OperationOutcome.yaml
+    bundle-response:
+      type: object
+      required:
+        - entry
+        - resourceType
+        - type
+      description: A FHIR searchset Bundle.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          default: Bundle
+        id:
+          type: string
+          description: Object ID for the Bundle.
+          example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
+        type:
+          type: string
+          description: Denotes that the bundle is a list of resources returned as a result of a search.
+          enum: [searchset]
+        entry:
+          type: array
+          description: A collection of resources contained within the Bundle.
+          items:
+            type: object
+            required:
+              - resourceType
+              - identifier
+              - type
+              - entry
+            description: A FHIR collection Bundle.
+            properties:
+              resourceType:
+                type: string
+                description: FHIR resource type.
+                default: Bundle
+              id:
+                type: string
+                description: Object ID for the Bundle.
+                example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
+              type:
+                type: string
+                description: Denotes that the bundle is a collection of resources. Representing a Prescription, in this case.
+                enum: [collection]
+              entry:
+                type: array
+                description: A collection of resources contained within the Bundle.
+                items:
+                  oneOf:
+                    - $ref: "#/components/schemas/MedicationRequest-Resource"
+                    - $ref: "#/components/schemas/OrganisationDispensing-Resource"
+                    - $ref: "#/components/schemas/OrganisationPrescribing-Resource"
+                    - $ref: "#/components/schemas/Practitioner-Resource"
+                    - $ref: "#/components/schemas/PractitionerRole-Resource"
+    MedicationRequest-Resource:
+      type: object
+      description: MedicationRequest
+      properties:
+        resource:
+          $ref: schemas/resources/MedicationRequest.yaml
+    OrganisationDispensing-Resource:
+      type: object
+      description: Dispensing Organisation
+      properties:
+        resource:
+          $ref: schemas/resources/OrganisationDispensing.yaml
+    OrganisationPrescribing-Resource:
+      type: object
+      description: Prescribing Organisation
+      properties:
+        resource:
+          $ref: schemas/resources/OrganisationPrescribing.yaml
+    Practitioner-Resource:
+      type: object
+      description: Practitioner
+      properties:
+        resource:
+          $ref: schemas/resources/Practitioner.yaml
+    PractitionerRole-Resource:
+      type: object
+      description: PractitionerRole
+      properties:
+        resource:
+          $ref: schemas/resources/PractitionerRole.yaml

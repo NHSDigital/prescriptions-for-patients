@@ -64,24 +64,7 @@ Each API and team is unique. We encourage you to use a `test/` folder in the roo
 
  * [**openapi-yaml-mode**](https://github.com/esc-emacs/openapi-yaml-mode) provides syntax highlighting, completion, and path help
 
-### Speccy
-
-> [Speccy](http://speccy.io/) *A handy toolkit for OpenAPI, with a linter to enforce quality rules, documentation rendering, and resolution.*
-
-Speccy does the lifting for the following npm scripts:
-
- * `test` -- Lints the definition
- * `publish` -- Outputs the specification as a **single file** into the `build/` directory
- * `serve` -- Serves a preview of the specification in human-readable format
-
-(Workflow detailed in a [post](https://developerjack.com/blog/2018/maintaining-large-design-first-api-specs/) on the *developerjack* blog.)
-
-:bulb: The `publish` command is useful when uploading to Apigee which requires the spec as a single file.
-
 ### Caveats
-
-#### Swagger UI
-Swagger UI unfortunately doesn't correctly render `$ref`s in examples, so use `speccy serve` instead.
 
 #### Apigee Portal
 The Apigee portal will not automatically pull examples from schemas, you must specify them manually.
@@ -144,7 +127,22 @@ Contains useful scripts that are used throughout the project, for example in Mak
 
 #### `/specification`:
 
-Create an OpenAPI Specification to document your API. For more information about developing specifications see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Documenting+your+API).
+The specification has been written to provide a clear representation of our API. Both what it expects and what it will return to the client.
+It conforms to the OpenAPI specification v3.0.x found [here](https://swagger.io/specification/)
+
+For more information about developing specifications see the [API Producer Zone confluence](https://nhsd-confluence.digital.nhs.uk/display/APM/Documenting+your+API).
+
+##### Usage
+To view the specification in a user-friendly format, you will need VSCode with the OpenAPI extension (42Crunch.vscode-openapi) installed.
+Open the `prescriptions-for-patients.yaml` file and use the `F1 > OpenAPI: show preview using ReDoc` command.
+
+##### Build
+From the project root, run `make publish`
+
+This will output the resolved specification in json format to the /build directory.
+
+This is used when uploading to Apigee, which requires the spec as a single file.
+
 
 #### `/tests`:
 
