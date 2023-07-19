@@ -10,6 +10,12 @@
       <Step>
         <Name>AssignMessage.AddPatientAccessHeader</Name>
       </Step>
+      {% if ALLOW_NHS_NUMBER_OVERRIDE %}
+      <Step>
+        <Name>AssignMessage.OverridePatientAccessHeader</Name>
+        <Condition>(request.header.X-NHS-NUMBER != null)</Condition>
+      </Step>
+      {% endif %}
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
