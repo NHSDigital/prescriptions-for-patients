@@ -78,11 +78,14 @@ info:
     |[NHS login - separate authentication and authorisation](https://digital.nhs.uk/developer/guides-and-documentation/security-and-authorisation/user-restricted-restful-apis-nhs-login-separate-authentication-and-authorisation) |OAuth 2.0 token exchange with signed JWT             |Gives access to user information.                            |Need to integrate and onboard separately with NHS login. |
 
     ## Environment and testing
-    | Environment   | Base URL          |
-    | ------------- | ----------------- |
-    | Sandbox       | Not yet available |
-    | Integration   | Not yet available |
-    | Production    | Not yet available |
+    | Environment           | Base URL                                                                     |
+    | --------------------- | ---------------------------------------------------------------------------- |
+    | Internal Dev          | `https://internal-dev.api.service.nhs.uk/prescriptions-for-patients`         |
+    | Internal Dev Sandbox  | `https://internal-dev-sandbox.api.service.nhs.uk/prescriptions-for-patients` |
+    | Internal QA           | `https://internal-qa.api.service.nhs.uk/prescriptions-for-patients`          |
+    | Reference             | `https://ref.api.service.nhs.uk/prescriptions-for-patients`                  |
+    | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                  |
+    | Production            | Not yet available                                                            |
 
     ## Onboarding
     This API is not currently available to external third parties for onboarding.
