@@ -13,7 +13,7 @@ info:
     email: api.management@nhs.net
   description: |
     ## Overview
-    Use this API to Retrieve prescriptions data for individual patients from the [Electronic Prescription Service (EPS)](https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-fhir).
+    Use this API to retrieve prescriptions data for individual patients from the [Electronic Prescription Service (EPS)](https://digital.nhs.uk/developer/api-catalogue/electronic-prescription-service-fhir).
 
     For use in patient-facing applications such as NHS App, to allow patients to view their digital prescriptions.
         
