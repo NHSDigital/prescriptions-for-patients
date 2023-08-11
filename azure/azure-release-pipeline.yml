@@ -33,6 +33,12 @@ extends:
     jinja_templates:
       ALLOW_NHS_NUMBER_OVERRIDE: false
     apigee_deployments:
+      - environment: manual-approval
+        stage_name: qa_manual_approval
+      - environment: manual-approval
+        stage_name: ref_manual_approval
+      - environment: manual-approval
+        stage_name: int_manual_approval
       - environment: internal-dev
         post_deploy:
           - template: ./templates/run-tests.yml
@@ -49,6 +55,9 @@ extends:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
+        depends_on:
+          - internal_dev
+          - qa_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
     #   - environment: internal-qa-sandbox
@@ -58,10 +67,19 @@ extends:
       - environment: ref
         post_deploy:
           - template: ./templates/run-tests.yml
+        depends_on:
+          - internal_dev
+          - ref_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: sandbox
         proxy_path: sandbox
+        depends_on:
+          - internal_qa
+          - int_manual_approval
       - environment: int
+        depends_on:
+          - internal_qa
+          - int_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
