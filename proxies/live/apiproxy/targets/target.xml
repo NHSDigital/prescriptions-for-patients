@@ -41,6 +41,6 @@
     </LoadBalancer>
   </HTTPTargetConnection> -->
   <HTTPTargetConnection>
-    <URL>https://pr-134.dev.prescriptionsforpatients.national.nhs.uk</URL>
+    <URL>https://pr-137.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
