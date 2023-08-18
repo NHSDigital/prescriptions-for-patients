@@ -42,14 +42,6 @@
         <Name>AssignMessage.Errors.InvalidRequestID</Name>
       </Step>
       <Step>
-        <Name>AssignMessage.Mirror.CorrelationID</Name>
-        <Condition>(original-request-details.header.X-Correlation-ID ~~ ".+")</Condition>
-      </Step>
-      <Step>
-        <Name>AssignMessage.Mirror.RequestID</Name>
-        <Condition>(original-request-details.header.X-Request-ID ~~ ".+")</Condition>
-      </Step>
-      <Step>
         <Name>AssignMessage.Errors.CatchAllMessage</Name>
       </Step>
     </FaultRule>
