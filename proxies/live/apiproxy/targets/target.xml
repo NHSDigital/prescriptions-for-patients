@@ -41,8 +41,20 @@
       <Step>
         <Name>AssignMessage.Errors.InvalidRequestID</Name>
       </Step>
+      <Step>
+        <Name>AssignMessage.Errors.CatchAllMessage</Name>
+      </Step>
     </FaultRule>
   </FaultRules>
+  <DefaultFaultRule>
+    <Step>
+      <Name>AssignMessage.Errors.CatchAllMessage</Name>
+    </Step>
+    <Step>
+      <Name>AssignMessage.Mirror.RequestID</Name>
+      <Condition>(original-request-details.header.X-Request-ID ~~ ".+")</Condition>
+    </Step>
+  </DefaultFaultRule>
   <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
