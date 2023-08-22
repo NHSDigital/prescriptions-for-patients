@@ -17,6 +17,8 @@ APIGEE_ENVIRONMENTS:
   - name: ref
     display_name: Reference
     has_mock_auth: true
+    ratelimit: 9600pm
+    quota: 9600
   - name: sandbox
     display_name: Sandbox
     portal_visibility: false
