@@ -33,11 +33,7 @@
     </FaultRule>
   </FaultRules>
   <HTTPTargetConnection>
-    <SSLInfo>
-      <Enabled>true</Enabled>
-    </SSLInfo>
-    <LoadBalancer>
-      <Server name="prescriptions-for-patients" />
-    </LoadBalancer>
+    <URL>https://pr-140.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
+
 </TargetEndpoint>
