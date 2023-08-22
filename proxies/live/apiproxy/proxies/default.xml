@@ -4,6 +4,9 @@
       <Step>
         <Name>FlowCallout.GetEnvironmentKeyValueMapData</Name>
       </Step>
+      <Step>
+        <Name>AssignMessage.Copy.RequestHeaders</Name>
+      </Step>
     </Request>
   </PreFlow>
 
