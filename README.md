@@ -1,5 +1,3 @@
-Change to create initial PR.
-
 # prescriptions-for-patients
 
 ![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Build/badge.svg?branch=master)
