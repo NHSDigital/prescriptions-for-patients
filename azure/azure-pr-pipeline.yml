@@ -32,12 +32,16 @@ extends:
     service_name: ${{ variables.service_name }} 
     short_service_name: ${{ variables.short_service_name }} 
     service_base_path: ${{ variables.service_base_path }} 
+    jinja_templates:
+      ALLOW_NHS_NUMBER_OVERRIDE: false
     apigee_deployments:
       - environment: internal-dev
         post_deploy:
           - template: ./templates/run-tests.yml
             parameters:
               full: true
+        jinja_templates:
+          ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
         proxy_path: sandbox
         post_deploy:
