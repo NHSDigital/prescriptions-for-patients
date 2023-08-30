@@ -14,7 +14,16 @@ function json_tryparse(raw) {
 }
 
 const healthcheck_content = json_tryparse(context.getVariable('healthcheckResponse.content'));
-const healthcheck_status = (healthcheck_status_code/100 === 2) ? "pass" : "fail";
+let healthcheck_status = (healthcheck_status_code === 200) ? "pass" : "fail";
+
+if (healthcheck_status == "pass") {
+    try {
+        healthcheck_status = healthcheck_content.status
+    }
+    catch (e) {
+        healthcheck_status = "fail"
+    }
+}
 const timeout = (healthcheck_status_code === null && healthcheck_failed) ? "true" : "false";
 
 const final_status = (healthcheck_status !== "pass") ? "fail" : "pass";
