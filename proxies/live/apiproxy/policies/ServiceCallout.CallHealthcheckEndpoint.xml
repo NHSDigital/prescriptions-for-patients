@@ -7,8 +7,7 @@
     </Request>
     <Response>healthcheckResponse</Response>
   <HTTPTargetConnection>
-    <URL>https://pr-145.dev.prescriptionsforpatients.national.nhs.uk</URL>
-    <Path>/_status</Path>
+    <URL>https://pr-145.dev.prescriptionsforpatients.national.nhs.uk/_status</URL>
   </HTTPTargetConnection>
   <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
 
