@@ -33,11 +33,11 @@ extends:
     jinja_templates:
       ALLOW_NHS_NUMBER_OVERRIDE: false
     apigee_deployments:
-      - environment: manual-approval
+      - environment: prescriptions-for-patients-api
         stage_name: qa_manual_approval
-      - environment: manual-approval
+      - environment: prescriptions-for-patients-api
         stage_name: ref_manual_approval
-      - environment: manual-approval
+      - environment: prescriptions-for-patients-api
         stage_name: int_manual_approval
       - environment: internal-dev
         post_deploy:

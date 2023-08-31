@@ -10,15 +10,8 @@
   "author": "NHS Digital",
   "license": "MIT",
   "homepage": "https://github.com/NHSDigital/prescriptions-for-patients",
-  "dependencies": {
-    "newman-reporter-htmlextra": "^1.20.1"
-  },
   "devDependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
-    "apigeetool": "^0.5.4",
-    "license-checker": "^25.0.1",
-    "minimist": "^1.2.2",
-    "newman": "^5.3.0",
-    "newman-reporter-html": "^1.0.5"
+    "license-checker": "^25.0.1"
   }
 }
