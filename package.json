@@ -12,10 +12,6 @@
   "homepage": "https://github.com/NHSDigital/prescriptions-for-patients",
   "devDependencies": {
     "@apidevtools/swagger-cli": "^4.0.4",
-    "apigeetool": "^0.5.4",
-    "license-checker": "^25.0.1",
-    "minimist": "^1.2.2",
-    "newman": "^5.3.0",
-    "newman-reporter-html": "^1.0.5"
+    "license-checker": "^25.0.1"
   }
 }
