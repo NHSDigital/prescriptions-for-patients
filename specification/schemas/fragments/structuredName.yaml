@@ -1,0 +1,19 @@
+type: object
+description: A structured name
+properties:
+  family:
+    type: string
+    description: Family name (often called Surname).
+    example: Toboggan
+  given:
+    type: array
+    description: Given names, including any middle names.
+    items:
+      type: string
+      example: Mantis
+  prefix:
+    type: array
+    description: Name prefixes, titles, and prenominals.
+    items:
+      type: string
+      example: Dr
