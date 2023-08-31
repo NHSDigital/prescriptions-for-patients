@@ -12,3 +12,6 @@ properties:
     items:
       oneOf:
         - $ref: ../fragments/structuredName.yaml
+        - type: string
+          description: Practitioner's name as a string
+          example: Dr John Paul Smith
