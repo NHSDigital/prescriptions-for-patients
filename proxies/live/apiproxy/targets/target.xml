@@ -46,9 +46,6 @@
       </Step>
     </FaultRule>
   </FaultRules>
-  <HTTPTargetConnection>
-    <URL>https://pr-145.dev.prescriptionsforpatients.national.nhs.uk</URL>
-  </HTTPTargetConnection>
   <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
 
   <HTTPTargetConnection>
@@ -56,6 +53,7 @@
   </HTTPTargetConnection>
 
   DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
+   -->
   <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
@@ -64,5 +62,4 @@
       <Server name="prescriptions-for-patients" />
     </LoadBalancer>
   </HTTPTargetConnection>
-   -->
 </TargetEndpoint>
