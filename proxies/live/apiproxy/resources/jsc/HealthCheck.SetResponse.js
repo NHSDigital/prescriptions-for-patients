@@ -18,10 +18,10 @@ let healthcheck_status = (healthcheck_status_code === 200) ? "pass" : "fail";
 
 if (healthcheck_status == "pass") {
     try {
-        healthcheck_status = healthcheck_content.status
+        healthcheck_status = healthcheck_content.status;
     }
     catch (e) {
-        healthcheck_status = "fail"
+        healthcheck_status = "fail";
     }
 }
 const timeout = (healthcheck_status_code === null && healthcheck_failed) ? "true" : "false";
