@@ -16,7 +16,7 @@ function json_tryparse(raw) {
 const healthcheck_content = json_tryparse(context.getVariable('healthcheckResponse.content'));
 let healthcheck_status = (healthcheck_status_code === 200) ? "pass" : "fail";
 
-if (healthcheck_status == "pass") {
+if (healthcheck_status === "pass") {
     try {
         healthcheck_status = healthcheck_content.status;
     }
