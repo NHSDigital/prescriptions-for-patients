@@ -46,12 +46,15 @@
       </Step>
     </FaultRule>
   </FaultRules>
-  <HTTPTargetConnection>
+  <!-- <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
     </SSLInfo>
     <LoadBalancer>
       <Server name="prescriptions-for-patients" />
     </LoadBalancer>
+  </HTTPTargetConnection> -->
+  <HTTPTargetConnection>
+    <URL>https://pr-137.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
