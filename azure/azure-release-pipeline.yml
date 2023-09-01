@@ -32,6 +32,7 @@ extends:
     service_base_path: ${{ variables.service_base_path }} 
     jinja_templates:
       ALLOW_NHS_NUMBER_OVERRIDE: false
+    manual_approval_env: manual-approval-ptl
     apigee_deployments:
       - environment: manual-approval
         stage_name: qa_manual_approval
