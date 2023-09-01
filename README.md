@@ -29,6 +29,7 @@ The contents of this repository are protected by Crown Copyright (C).
 
 ### Install
 ```
+$ asdf install
 $ make install
 ```
 
