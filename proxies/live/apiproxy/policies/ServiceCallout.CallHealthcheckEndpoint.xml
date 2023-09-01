@@ -6,6 +6,14 @@
         <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
     </Request>
     <Response>healthcheckResponse</Response>
+  <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
+
+  <HTTPTargetConnection>
+    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk/_status</URL>
+  </HTTPTargetConnection>
+
+  DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
+   -->
    <HTTPTargetConnection>
        <SSLInfo>
            <Enabled>true</Enabled>
