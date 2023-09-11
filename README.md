@@ -2,8 +2,10 @@
 
 ![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Build/badge.svg?branch=master)
 
-This is a specification for the *prescriptions-for-patients* API.   
-This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients
+This is a proxy code and specification for the *prescriptions-for-patients* API.   
+This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients.   
+The API returns prescriptions for the NHS number that the caller is authenticated with.
+Access to the API is restricted to authenticated NHS login OAuth V2 token.   
 
 * `specification/` This [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
 * `scripts/` Utilities helpful to developers of this specification.
