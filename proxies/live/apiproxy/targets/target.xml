@@ -2,7 +2,7 @@
   <PreFlow>
     <Request>
       <Step>
-        <Name>OauthV2.VerifyAccessTokenAppLevel3OrCis2Aal3</Name>
+        <Name>OauthV2.VerifyAccessTokenP9</Name>
       </Step>
       <Step>
         <Name>DecodeJWT.DecodeIdToken</Name>
