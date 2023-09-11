@@ -8,10 +8,12 @@ import pytest
 import requests
 import uuid
 
+
 @pytest.mark.smoketest
 def test_ping(nhsd_apim_proxy_url):
     resp = requests.get(f"{nhsd_apim_proxy_url}/_ping")
     assert resp.status_code == 200
+
 
 @pytest.mark.smoketest
 def test_wait_for_ping(nhsd_apim_proxy_url):
@@ -33,6 +35,7 @@ def test_wait_for_ping(nhsd_apim_proxy_url):
 
     assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
 
+
 @pytest.mark.smoketest
 def test_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     resp = requests.get(
@@ -40,6 +43,7 @@ def test_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     )
     assert resp.status_code == 200
     # Make some additional assertions about your status response here!
+
 
 @pytest.mark.smoketest
 def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
@@ -65,6 +69,7 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
 
     assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
     assert deployment_status == 'pass'
+
 
 @pytest.mark.nhsd_apim_authorization(
     {

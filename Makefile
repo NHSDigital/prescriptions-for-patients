@@ -19,11 +19,19 @@ install: install-node install-python .git/hooks/pre-commit
 lint:
 	npm run lint
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
+	shellcheck scripts/*.sh
 
 #Removes build/ + dist/ directories
 clean:
 	rm -rf build
 	rm -rf dist
+	rm -f test-report.xml
+	rm -f smoketest-report.xml
+
+deep-clean: clean
+	rm -rf venv
+	find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+	poetry env remove --all
 
 #Creates the fully expanded OAS spec in json
 publish: clean
