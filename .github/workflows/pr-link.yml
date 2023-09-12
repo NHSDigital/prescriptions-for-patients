@@ -1,4 +1,4 @@
-name: PR Quality Check
+name: PR Link ticket
 on: 
   pull_request:
     types: [opened]
