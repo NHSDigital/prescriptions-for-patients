@@ -31,4 +31,3 @@ APM-NNN Summary of changes
 Longer description of changes if explaining rationale is necessary,
 limited to 80 columns and spanning as many lines as you need.
 ```
-

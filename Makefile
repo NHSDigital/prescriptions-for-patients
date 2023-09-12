@@ -8,12 +8,11 @@ install-python:
 install-node:
 	npm install --legacy-peer-deps
 
-#Configures Git Hooks, which are scripts that run given a specified event.
-.git/hooks/pre-commit:
-	cp scripts/pre-commit .git/hooks/pre-commit
+install-hooks: install-python
+	poetry run pre-commit install --install-hooks --overwrite
 
 #Condensed Target to run all targets above.
-install: install-node install-python .git/hooks/pre-commit
+install: install-node install-python install-hooks
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
 lint:

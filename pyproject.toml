@@ -14,7 +14,8 @@ authors = [
     "Jack Spagnoli <jack.spagnoli1@nhs.net>",
     "Tom Smith <tom.smith24@nhs.net>",
     "Adam Brown <adam.brown41@nhs.net>",
-    "Sean Steberis> <sean.steberis2@nhs.net>"
+    "Sean Steberis <sean.steberis2@nhs.net>",
+    "Kate.Bobyn <kate.bobyn2@nhs.net>"
 ]
 readme = 'README.md'
 license = "MIT"
@@ -26,6 +27,7 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 [tool.poetry.dependencies]
 python = "^3.8"
 pytest-nhsd-apim = "^3.3.7"
+pre-commit = "^3.4.0"
 
 [tool.poetry.scripts]
 
@@ -43,4 +45,3 @@ pytest = "^6.1.2"
 coverage = "^5.5"
 aiohttp = "^3.8.5"
 pytest-asyncio = "^0.14.0"
-

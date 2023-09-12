@@ -1,0 +1,36 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-merge-conflict
+        name: Check for merge conflict strings
+
+      - id: end-of-file-fixer
+        name: Fix missing newline at the end of files
+
+      - id: check-shebang-scripts-are-executable
+        name: Check shell scripts are executable
+        types: [bash, shell]
+
+      - id: check-yaml
+        name: Check pipelines configuration
+        files: ^(azure)
+
+  -   repo: https://github.com/pycqa/flake8
+      rev: ''  # pick a git hash / tag to point to
+      hooks:
+      -   id: flake8
+
+  - repo: local
+    hooks:
+      - id: lint specification
+        name: Lint specification
+        entry: npm
+        args: ["run", "lint"]
+        language: system
+        files: ^specification
+        pass_filenames: false
+
+
+fail_fast: true
+default_stages: [commit]

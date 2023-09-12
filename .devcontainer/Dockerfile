@@ -44,4 +44,3 @@ RUN asdf install; \
     asdf reshim python; \
     asdf reshim poetry; \
     asdf reshim nodejs;
-

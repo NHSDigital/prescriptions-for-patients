@@ -74,6 +74,7 @@ There are the `make` targets defined:
  * `test` -- runs all tests against non prod environment
  * `smoketest-prod` -- runs tests marked as smoke test against prod environment
  * `test-prod` -- runs all tests against prod environment
+ * `check-licenses` -- checks python and node dependencies for GPL licensed code
 
 ### Testing
 There are some basic status tests that run as part of the CI build. These just test _ping and _status and Bundle endpoint are working as expected.   

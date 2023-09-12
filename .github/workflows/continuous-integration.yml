@@ -66,4 +66,3 @@ jobs:
             [Release workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
             It was initialized by [${{ github.event.sender.login }}](${{ github.event.sender.html_url }})
-
