@@ -24,6 +24,10 @@ APIGEE_ENVIRONMENTS:
     portal_visibility: false
   - name: int
     display_name: Integration
+  - name: prod
+    display_name: Production
+    ratelimit: 9600pm
+    quota: 9600
 ---
 meta:
   api:
