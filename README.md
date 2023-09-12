@@ -101,7 +101,7 @@ This folder contains workflows and templates related to github
 - `pull_request_template.yml`: Template for pull requests.   
 
 `/.github/workflows`: This folder contains templates for github action workflows such as:
-- `pr-lint.yaml`: This workflow template links Pull Request's to Jira tickets and runs when a pull request is opened.
+- `pr-link.yaml`: This workflow template links Pull Request's to Jira tickets and runs when a pull request is opened.
 - `continuous-integration.yml`: This workflow template publishes a Github release when merged to master.
 - `dependabot.yml`: Dependabot definition file
 - `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests 
