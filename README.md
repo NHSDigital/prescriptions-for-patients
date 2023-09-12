@@ -4,7 +4,7 @@
 
 This is a proxy code and specification for the *prescriptions-for-patients* API.   
 This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients.   
-The API returns prescriptions for the NHS number that the caller is authenticated with.
+The API returns prescriptions for the NHS number that the caller is authenticated with. In non production environments you can pass in a header called x-nhs-number to get details for an NHS number other than the one you are authenticated with.   
 Access to the API is restricted to authenticated NHS login OAuth V2 token.   
 
 * `specification/` This [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
@@ -51,6 +51,8 @@ https://stackoverflow.com/a/59170001
 
 You will need to create the files, if they do not already exist.
 This will ensure that your VSCode bash terminal prompts you for your GPG key password.
+
+You can cache the gpg key passphrase by following instructions at https://superuser.com/questions/624343/keep-gnupg-credentials-cached-for-entire-user-session
 
 
 ### Pre-commit hooks
@@ -101,7 +103,7 @@ This folder contains workflows and templates related to github
 - `pull_request_template.yml`: Template for pull requests.   
 
 `/.github/workflows`: This folder contains templates for github action workflows such as:
-- `pr-link.yaml`: This workflow template links Pull Request's to Jira tickets and runs when a pull request is opened.
+- `pr-link.yaml`: This workflow template links Pull Requests to Jira tickets and runs when a pull request is opened.
 - `continuous-integration.yml`: This workflow template publishes a Github release when merged to master.
 - `dependabot.yml`: Dependabot definition file
 - `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests 
