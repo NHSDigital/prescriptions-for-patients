@@ -25,21 +25,21 @@
         "extensions": [
           "redhat.vscode-yaml",
           "ms-python.python",
-          "github.vscode-pull-request-github",
+          "ms-python.flake8",
           "eamodio.gitlens",
+          "github.vscode-pull-request-github",
           "orta.vscode-jest",
           "42crunch.vscode-openapi",
           "mermade.openapi-lint",
           "rvest.vs-code-prettier-eslint",
-          "redhat.vscode-yaml",
           "christian-kohler.npm-intellisense",
           "dbaeumer.vscode-eslint",
           "lfm.vscode-makefile-term",
-          "ms-python.flake8",
           "GrapeCity.gc-excelviewer",
           "redhat.vscode-xml",
           "streetsidesoftware.code-spell-checker",
-          "timonwong.shellcheck"
+          "timonwong.shellcheck",
+          "github.vscode-github-actions"
         ],
         "settings": {
           "python.defaultInterpreterPath": "/workspaces/prescriptions-for-patients/.venv/bin/python",
@@ -50,6 +50,7 @@
           "python.linting.pylintEnabled": false,
           "python.linting.flake8Enabled": true,
           "python.linting.enabled": true, // required to format on save
+          "python.experiments.optOutFrom": ["pythonTestAdapter"],
           "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
           "editor.formatOnPaste": false, // required
           "editor.formatOnType": false, // required

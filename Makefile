@@ -84,3 +84,12 @@ smoketest-prod:
 test-prod:
 	$(PROD_TEST_CMD) \
 	--junitxml=test-report.xml \
+
+
+check-licenses: check-licenses-node check-licenses-python
+
+check-licenses-node:
+	npm run check-licenses
+
+check-licenses-python:
+	scripts/check_python_licenses.sh
