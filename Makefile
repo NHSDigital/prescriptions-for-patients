@@ -8,22 +8,29 @@ install-python:
 install-node:
 	npm install --legacy-peer-deps
 
-#Configures Git Hooks, which are scripts that run given a specified event.
-.git/hooks/pre-commit:
-	cp scripts/pre-commit .git/hooks/pre-commit
+install-hooks: install-python
+	poetry run pre-commit install --install-hooks --overwrite
 
 #Condensed Target to run all targets above.
-install: install-node install-python .git/hooks/pre-commit
+install: install-node install-python install-hooks
 
 #Run the npm linting script (specified in package.json). Used to check the syntax and formatting of files.
 lint:
 	npm run lint
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
+	shellcheck scripts/*.sh
 
 #Removes build/ + dist/ directories
 clean:
 	rm -rf build
 	rm -rf dist
+	rm -f test-report.xml
+	rm -f smoketest-report.xml
+
+deep-clean: clean
+	rm -rf venv
+	find . -name 'node_modules' -type d -prune -exec rm -rf '{}' +
+	poetry env remove --all
 
 #Creates the fully expanded OAS spec in json
 publish: clean
@@ -76,3 +83,12 @@ smoketest-prod:
 test-prod:
 	$(PROD_TEST_CMD) \
 	--junitxml=test-report.xml \
+
+
+check-licenses: check-licenses-node check-licenses-python
+
+check-licenses-node:
+	npm run check-licenses
+
+check-licenses-python:
+	scripts/check_python_licenses.sh

@@ -1,0 +1,4 @@
+<OAuthV2 async="false" continueOnError="false" enabled="true" name="OauthV2.VerifyAccessTokenP9">
+  <Operation>VerifyAccessToken</Operation>
+  <Scope>urn:nhsd:apim:user-nhs-login:P9:prescriptions-for-patients</Scope>
+</OAuthV2>

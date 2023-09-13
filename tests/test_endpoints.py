@@ -6,6 +6,7 @@ for more ideas on how to test the authorization of your API.
 from os import getenv
 import pytest
 import requests
+import uuid
 
 
 @pytest.mark.smoketest
@@ -49,6 +50,7 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
     retries = 0
     resp = requests.get(f"{nhsd_apim_proxy_url}/_status", headers=status_endpoint_auth_headers)
     deployed_commitId = resp.json().get("commitId")
+    deployment_status = resp.json().get("status")
 
     while (deployed_commitId != getenv('SOURCE_COMMIT_ID')
             and retries <= 30
@@ -66,27 +68,21 @@ def test_wait_for_status(nhsd_apim_proxy_url, status_endpoint_auth_headers):
         pytest.fail("version not found")
 
     assert deployed_commitId == getenv('SOURCE_COMMIT_ID')
+    assert deployment_status == 'pass'
 
 
-@pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level0"})
-def test_app_level0(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-    resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-    assert resp.status_code == 401  # unauthorized
-
-# @pytest.mark.nhsd_apim_authorization(
-#     {
-#         "access": "healthcare_worker",
-#         "level": "aal3",
-#         "login_form": {"username": "656005750104"},
-#     }
-# )
-
-# @pytest.mark.nhsd_apim_authorization({"access": "application", "level": "level3"})
-# def test_app_level3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-#     resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-#     assert resp.status_code == 200
-
-
-# def test_cis2_aal3(nhsd_apim_proxy_url, nhsd_apim_auth_headers):
-#     resp = requests.get(f"{nhsd_apim_proxy_url}", headers=nhsd_apim_auth_headers)
-#     assert resp.status_code == 200
+@pytest.mark.nhsd_apim_authorization(
+    {
+        "access": "patient",
+        "level": "P9",
+        "login_form": {"username": "9912003071"},
+        "authentication": "separate",
+    }
+)
+def test_authed_patient_can_access_bundle_endpoint(
+    nhsd_apim_proxy_url, nhsd_apim_auth_headers
+):
+    request_headers = nhsd_apim_auth_headers
+    request_headers['X-Request-Id'] = str(uuid.uuid4())
+    resp = requests.get(f"{nhsd_apim_proxy_url}/Bundle", headers=request_headers)
+    assert resp.status_code == 200

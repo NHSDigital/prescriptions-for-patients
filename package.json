@@ -1,11 +1,15 @@
 {
   "name": "prescriptions-for-patients",
   "version": "0.0.1",
-  "description": "OAS (Swagger v3) API Definition for Template API",
+  "description": "OAS (Swagger v3) API Definition for prescriptions for patients API",
   "scripts": {
     "lint": "node_modules/.bin/swagger-cli validate specification/prescriptions-for-patients.yaml",
     "resolve": "node_modules/.bin/swagger-cli bundle specification/prescriptions-for-patients.yaml -r -o build/prescriptions-for-patients.json",
     "check-licenses": "node_modules/.bin/license-checker --failOn GPL --failOn LGPL"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NHSDigital/prescriptions-for-patients"
   },
   "author": "NHS Digital",
   "license": "MIT",
