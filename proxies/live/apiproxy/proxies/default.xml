@@ -45,14 +45,14 @@
       <Condition>(proxy.pathsuffix MatchesPath "/_status") and ((request.verb = "GET") or (request.verb = "HEAD"))
       </Condition>
     </Flow>
+    <Flow name="add_res_headers">
+      <Response>
+        <Step>
+          <Name>AssignMessage.AddHstsHeader</Name>
+        </Step>
+      </Response>
+    </Flow>
   </Flows>
-  <PostFlow>
-    <Response>
-      <Step>
-        <Name>AssignMessage.AddHstsHeader</Name>
-      </Step>
-    </Response>
-  </PostFlow>
   <PostClientFlow name="PostClientFlow">
     <Response>
       <Step>
