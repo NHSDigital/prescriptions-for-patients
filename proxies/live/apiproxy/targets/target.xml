@@ -26,16 +26,6 @@
       </Step>
     </Request>
   </PreFlow>
-  <Flows>
-    <Flow name="add_response_headers">
-      <Request/>
-      <Response>
-        <Step>
-          <Name>AssignMessage.AddHstsHeader</Name>
-        </Step>
-      </Response>
-    </Flow>
-  </Flows>
   <FaultRules>
     <FaultRule name="access_token_expired">
       <Step>

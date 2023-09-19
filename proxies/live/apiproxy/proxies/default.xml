@@ -46,6 +46,13 @@
       </Condition>
     </Flow>
   </Flows>
+  <PostFlows>
+    <Response>
+      <Step>
+        <Name>AssignMessage.AddHstsHeader</Name>
+      </Step>
+    </Response>
+  </PostFlows>
   <PostClientFlow name="PostClientFlow">
     <Response>
       <Step>
