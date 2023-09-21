@@ -24,6 +24,11 @@ APIGEE_ENVIRONMENTS:
     portal_visibility: false
   - name: int
     display_name: Integration
+  - name: prod
+    display_name: Production
+    approval_type: manual
+    ratelimit: 9600pm
+    quota: 9600
 ---
 meta:
   api:
@@ -40,7 +45,7 @@ apigee:
   - name: {{ ENV.name }}
     products:
       - name: {{ NAME }}
-        approvalType: auto
+        approvalType: {{ ENV.approval_type | default('auto') }}
         attributes:
           - name: access
             value: public
@@ -51,12 +56,12 @@ apigee:
               {{ NAME }}:
                 quota:
                   enabled: true
-                  limit: 300
+                  limit: {{ ENV.quota | default(300)}}
                   interval: 1
                   timeunit: minute
                 spikeArrest:
                   enabled: true
-                  ratelimit: 600pm # 10 requests per second
+                  ratelimit: {{ ENV.ratelimit | default('600pm') }}
               app:
                 quota:
                   enabled: false
