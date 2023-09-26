@@ -33,6 +33,7 @@ extends:
     jinja_templates:
       ALLOW_NHS_NUMBER_OVERRIDE: false
     prod_producer_approval: true
+    manual_approval_env: prescriptions-for-patients
     apigee_deployments:
       - environment: manual-approval
         stage_name: qa_manual_approval
