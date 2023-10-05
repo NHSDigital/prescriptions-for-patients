@@ -1,0 +1,12 @@
+name: deploy_pr
+
+on:
+  pull_request:
+    branches: [master]
+
+env:
+  BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+
+jobs:
+  quality_checks:
+    uses: ./.github/workflows/quality_checks.yml
