@@ -84,5 +84,6 @@ def test_authed_patient_can_access_bundle_endpoint(
 ):
     request_headers = nhsd_apim_auth_headers
     request_headers['X-Request-Id'] = str(uuid.uuid4())
+    request_headers['X-Correlation-ID'] = str(uuid.uuid4())
     resp = requests.get(f"{nhsd_apim_proxy_url}/Bundle", headers=request_headers)
     assert resp.status_code == 200
