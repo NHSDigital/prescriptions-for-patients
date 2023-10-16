@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ServiceCallout async="false" continueOnError="true" enabled="true" name="ServiceCallout.CallMetadataEndpoint">
+    <DisplayName>ServiceCallout.CallMetadataEndpoint</DisplayName>
+    <Properties/>
+    <Request clearPayload="true" variable="metadataRequest">
+        <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+    </Request>
+    <Response>metadataResponse</Response>
+  <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
+
+  <HTTPTargetConnection>
+    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk/metadata</URL>
+  </HTTPTargetConnection>
+
+  DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
+   -->
+   <HTTPTargetConnection>
+       <SSLInfo>
+           <Enabled>true</Enabled>
+       </SSLInfo>
+       <LoadBalancer>
+           <Server name="prescriptions-for-patients" />
+       </LoadBalancer>
+       <Path>/metadata</Path>
+   </HTTPTargetConnection>
+    <Timeout>20000</Timeout>
+</ServiceCallout>
