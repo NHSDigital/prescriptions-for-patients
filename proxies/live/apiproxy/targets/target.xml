@@ -7,9 +7,11 @@
       </Step>
       <Step>
         <Name>DecodeJWT.DecodeIdToken</Name>
+        <Condition>not proxy.pathsuffix MatchesPath "/metadata"</Condition>
       </Step>
       <Step>
         <Name>AssignMessage.AddPatientAccessHeader</Name>
+        <Condition>not proxy.pathsuffix MatchesPath "/metadata"</Condition>
       </Step>
       {% if ALLOW_NHS_NUMBER_OVERRIDE %}
       <Step>
