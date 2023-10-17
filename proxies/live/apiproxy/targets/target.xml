@@ -3,6 +3,7 @@
     <Request>
       <Step>
         <Name>OauthV2.VerifyAccessTokenP9</Name>
+        <auth>not proxy.pathsuffix MatchesPath "/metadata"</auth>
       </Step>
       <Step>
         <Name>DecodeJWT.DecodeIdToken</Name>
