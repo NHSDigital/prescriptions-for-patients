@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<FlowCallout async="false" continueOnError="false" enabled="true" name="FlowCallout.VerifyHeaders">
+<Flow async="false" continueOnError="false" enabled="true" name="Flow.VerifyHeaders">
     <Step>
         <Name>OauthV2.VerifyAccessTokenP9</Name>
     </Step>
@@ -20,4 +20,4 @@
         <Name>RaiseFault.400MissingHeader</Name>
         <Condition>(not original-request-details.header.X-Request-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")</Condition>
     </Step>
-</FlowCallout>
+</Flow>

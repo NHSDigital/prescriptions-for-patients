@@ -2,7 +2,7 @@
   <PreFlow>
     <Request>
       <Step>
-        <Name>FlowCallout.VerifyHeaders</Name>
+        <Name>Flow.VerifyHeaders</Name>
         <Condition>(not proxy.pathsuffix MatchesPath "/metadata")</Condition>
       </Step>
       <Step>
