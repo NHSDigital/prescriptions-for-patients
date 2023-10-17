@@ -2,27 +2,8 @@
   <PreFlow>
     <Request>
       <Step>
-        <Name>OauthV2.VerifyAccessTokenP9</Name>
-        <Condition>not proxy.pathsuffix MatchesPath "/metadata"</Condition>
-      </Step>
-      <Step>
-        <Name>DecodeJWT.DecodeIdToken</Name>
-        <Condition>not proxy.pathsuffix MatchesPath "/metadata"</Condition>
-      </Step>
-      <Step>
-        <Name>AssignMessage.AddPatientAccessHeader</Name>
-        <Condition>not proxy.pathsuffix MatchesPath "/metadata"</Condition>
-      </Step>
-      {% if ALLOW_NHS_NUMBER_OVERRIDE %}
-      <Step>
-        <Name>AssignMessage.OverridePatientAccessHeader</Name>
-        <Condition>(request.header.X-NHS-NUMBER != null)</Condition>
-      </Step>
-      {% endif %}
-      <Step>
-        <!-- Header NHSD-Request-ID must be in the correct format (GUID) -->
-        <Name>RaiseFault.400MissingHeader</Name>
-        <Condition>(not original-request-details.header.X-Request-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")</Condition>
+        <Name>FlowCallout.VerifyHeaders</Name>
+        <Condition>(not proxy.pathsuffix MatchesPath "/metadata")</Condition>
       </Step>
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
