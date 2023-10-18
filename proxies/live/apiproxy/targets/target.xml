@@ -28,7 +28,7 @@
         </Step>
       </Request>
     </Flow>
-    <Flow>
+    <Flow name="RateLimiting">
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
