@@ -87,3 +87,11 @@ def test_authed_patient_can_access_bundle_endpoint(
     request_headers['X-Correlation-ID'] = str(uuid.uuid4())
     resp = requests.get(f"{nhsd_apim_proxy_url}/Bundle", headers=request_headers)
     assert resp.status_code == 200
+
+
+@pytest.mark.smoketest
+def test_un_authed_request_can_access_metadata_endpoint(nhsd_apim_proxy_url):
+    resp = requests.get(
+        f"{nhsd_apim_proxy_url}/metadata", headers=None
+    )
+    assert resp.status_code == 200
