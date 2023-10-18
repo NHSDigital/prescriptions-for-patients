@@ -5,8 +5,6 @@ APIGEE_ENVIRONMENTS:
   - name: internal-dev
     display_name: Internal Development
     has_mock_auth: true
-    ratelimit: 10pm
-    quota: 10
   - name: internal-dev-sandbox
     display_name: Internal Development Sandbox
     portal_visibility: false
