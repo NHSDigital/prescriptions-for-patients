@@ -3,9 +3,11 @@
   <Flows>
     <Flow name="No-Auth">
       <Condition>(proxy.pathsuffix MatchesPath "/metadata")</Condition>
-      <Step>
-        <Name>FlowCallout.ApplyRateLimiting</Name>
-      </Step>
+      <Request>
+        <Step>
+          <Name>FlowCallout.ApplyRateLimiting</Name>
+        </Step>
+      </Request>
     </Flow>
     <Flow name="Auth">
       <Request>
