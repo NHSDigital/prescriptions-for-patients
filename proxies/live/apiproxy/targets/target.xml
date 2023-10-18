@@ -3,11 +3,6 @@
   <Flows>
     <Flow name="No-Auth">
       <Condition>(proxy.pathsuffix MatchesPath "/metadata")</Condition>
-      <Request>
-        <Step>
-          <Name>FlowCallout.ApplyRateLimiting</Name>
-        </Step>
-      </Request>
     </Flow>
     <Flow name="Auth">
       <Request>
@@ -31,12 +26,10 @@
           <Name>RaiseFault.400MissingHeader</Name>
           <Condition>(not original-request-details.header.X-Request-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")</Condition>
         </Step>
+        <Step>
+          <Name>FlowCallout.ApplyRateLimiting</Name>
+        </Step>
       </Request>
-    </Flow>
-    <Flow name="RateLimiting">
-      <Step>
-        <Name>FlowCallout.ApplyRateLimiting</Name>
-      </Step>
     </Flow>
   </Flows>
   <FaultRules>
