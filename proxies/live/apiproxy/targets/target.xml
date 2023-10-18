@@ -1,15 +1,39 @@
 <TargetEndpoint name="prescriptions-for-patients">
-  <PreFlow>
-    <Request>
-      <Step>
-        <Name>Flow.VerifyHeaders</Name>
-        <Condition>(not proxy.pathsuffix MatchesPath "/metadata")</Condition>
-      </Step>
+  <PreFlow/>
+  <Flows>
+    <Flow name="No-Auth">
+      <Condition>(proxy.pathsuffix MatchesPath "/metadata")</Condition>
+    </Flow>
+    <Flow name="Auth">
+      <Request>
+        <Step>
+          <Name>OauthV2.VerifyAccessTokenP9</Name>
+        </Step>
+        <Step>
+          <Name>DecodeJWT.DecodeIdToken</Name>
+        </Step>
+        <Step>
+          <Name>AssignMessage.AddPatientAccessHeader</Name>
+        </Step>
+        {% if ALLOW_NHS_NUMBER_OVERRIDE %}
+        <Step>
+          <Name>AssignMessage.OverridePatientAccessHeader</Name>
+          <Condition>(request.header.X-NHS-NUMBER != null)</Condition>
+        </Step>
+        {% endif %}
+        <Step>
+          <!-- Header NHSD-Request-ID must be in the correct format (GUID) -->
+          <Name>RaiseFault.400MissingHeader</Name>
+          <Condition>(not original-request-details.header.X-Request-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")</Condition>
+        </Step>
+      </Request>
+    </Flow>
+    <Flow>
       <Step>
         <Name>FlowCallout.ApplyRateLimiting</Name>
       </Step>
-    </Request>
-  </PreFlow>
+    </Flow>
+  </Flows>
   <FaultRules>
     <FaultRule name="access_token_expired">
       <Step>
