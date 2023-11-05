@@ -49,6 +49,9 @@
   <PostClientFlow name="PostClientFlow">
     <Response>
       <Step>
+        <Name>FlowCallout.LogToSplunkRequestContentBody</Name>
+      </Step>
+      <Step>
         <Name>FlowCallout.SetSplunkPayload</Name>
       </Step>
       <Step>
