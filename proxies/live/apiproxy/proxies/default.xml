@@ -51,12 +51,6 @@
       <Step>
         <Name>FlowCallout.LogToSplunkRequestContentBody</Name>
       </Step>
-      <Step>
-        <Name>FlowCallout.SetSplunkPayload</Name>
-      </Step>
-      <Step>
-        <Name>FlowCallout.LogToSplunk</Name>
-      </Step>
     </Response>
   </PostClientFlow>
   <HTTPProxyConnection>
