@@ -297,10 +297,10 @@
                   "type": "both",
                   "line": [
                     "HALLGARTH SURGERY",
-                    "CHEAPSIDE"
+                    "CHEAPSIDE",
+                    "SHILDON",
+                    "COUNTY DURHAM"
                   ],
-                  "city": "SHILDON",
-                  "district": "COUNTY DURHAM",
                   "postalCode": "DL4 2HP"
                 }
               ]
@@ -329,12 +329,7 @@
                 {
                   "use": "work",
                   "type": "both",
-                  "line": [
-                    "THE HEALTH AND WELLBEING INNOVATION C",
-                    "TRELISKE"
-                  ],
-                  "city": "TRURO",
-                  "district": "CORNWALL",
+                  "text": "THE HEALTH AND WELLBEING INNOVATION C, TRELISKE, TRURO, CORNWALL",
                   "postalCode": "TR1 3FF"
                 }
               ]
