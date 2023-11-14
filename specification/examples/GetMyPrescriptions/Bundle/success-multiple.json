@@ -262,12 +262,8 @@
               "name": [
                 {
                   "family": "BOIN",
-                  "given": [
-                    "C"
-                  ],
-                  "prefix": [
-                    "DR"
-                  ]
+                  "given": ["C"],
+                  "prefix": ["DR"]
                 }
               ]
             }
@@ -422,12 +418,8 @@
               "name": [
                 {
                   "family": "ROBINSON",
-                  "given": [
-                    "C"
-                  ],
-                  "prefix": [
-                    "DR"
-                  ]
+                  "given": ["C"],
+                  "prefix": ["DR"]
                 }
               ]
             }
