@@ -291,9 +291,12 @@
                 {
                   "use": "work",
                   "type": "both",
-                  "line": ["HALLGARTH SURGERY", "CHEAPSIDE"],
-                  "city": "SHILDON",
-                  "district": "COUNTY DURHAM",
+                  "line": [
+                    "HALLGARTH SURGERY",
+                    "CHEAPSIDE",
+                    "SHILDON",
+                    "COUNTY DURHAM"
+                  ],
                   "postalCode": "DL4 2HP"
                 }
               ]
@@ -322,9 +325,7 @@
                 {
                   "use": "work",
                   "type": "both",
-                  "line": ["THE HEALTH AND WELLBEING INNOVATION C", "TRELISKE"],
-                  "city": "TRURO",
-                  "district": "CORNWALL",
+                  "text": "THE HEALTH AND WELLBEING INNOVATION C, TRELISKE, TRURO, CORNWALL",
                   "postalCode": "TR1 3FF"
                 }
               ]
@@ -445,11 +446,7 @@
                 {
                   "use": "work",
                   "type": "both",
-                  "line": ["IVESON APPROACH"],
-                  "city": "LEEDS",
-                  "district": "WEST YORKSHIRE",
-                  "postalCode": "LS16 6FR",
-                  "country": "ENGLAND"
+                  "text": "IVESON APPROACH, LEEDS, WEST YORKSHIRE, ENGLAND, LS16 6FR"
                 }
               ]
             }
