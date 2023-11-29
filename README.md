@@ -1,6 +1,6 @@
 # prescriptions-for-patients
 
-![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Build/badge.svg?branch=master)
+![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Create%20Release/badge.svg?branch=master)
 
 This is a proxy code and specification for the *prescriptions-for-patients* API.   
 This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients.   
