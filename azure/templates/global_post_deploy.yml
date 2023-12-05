@@ -1,0 +1,6 @@
+steps:
+  - bash: |
+      echo "global post deploy"
+    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+    displayName: global post deploy
+    condition: always()

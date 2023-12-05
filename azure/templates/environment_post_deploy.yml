@@ -1,0 +1,6 @@
+steps:
+  - bash: |
+      echo "environment post deploy"
+    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+    displayName: environment post deploy
+    condition: always()
