@@ -12,6 +12,7 @@ steps:
       fi
       export TARGET_TAG=`echo ${SERVICE_ARTIFACT_NAME} | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+-[[:alpha:]]\+" | tail -1`
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches"
-      echo "TARGET_TAG ${TARGET_TAG}"
+      echo "##[debug] SERVICE_ARTIFACT_NAME ${SERVICE_ARTIFACT_NAME}"
+      echo "##[debug] TARGET_TAG ${TARGET_TAG}"
       # curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches" -d '{"event_type": "create_rc_int_release_notes", "client_payload": {"release_tag": "${TARGET_TAG}"}}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
     displayName: Create release notes
