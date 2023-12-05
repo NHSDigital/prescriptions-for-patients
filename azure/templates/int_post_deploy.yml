@@ -1,0 +1,6 @@
+stages:
+- template: ./run-tests.yml
+  parameters:
+    full: true
+
+- template: ./environment_post_deploy.yml
