@@ -8,7 +8,7 @@ on:
     types: [create_int_release_notes]
 
 jobs:
-  create_confluence_release_notes:
+  create_int_confluence_release_notes:
     runs-on: ubuntu-latest
     permissions:
       id-token: write

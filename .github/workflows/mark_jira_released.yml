@@ -8,7 +8,7 @@ on:
     types: [mark_jira_released]
 
 jobs:
-  create_confluence_release_notes:
+  mark_jira_released:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
