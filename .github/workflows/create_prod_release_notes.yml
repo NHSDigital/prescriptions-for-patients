@@ -1,10 +1,7 @@
 name: 'Create prod confluence release notes'
 
 on:
-  workflow_call:
   workflow_dispatch:
-  repository_dispatch:
-    types: [create_prod_release_notes]
 
 jobs:
   create_prod_confluence_release_notes:

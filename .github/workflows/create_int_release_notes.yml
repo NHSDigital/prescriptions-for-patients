@@ -1,10 +1,7 @@
 name: 'Create int confluence release notes'
 
 on:
-  workflow_call:
   workflow_dispatch:
-  repository_dispatch:
-    types: [create_int_release_notes]
 
 jobs:
   create_int_confluence_release_notes:

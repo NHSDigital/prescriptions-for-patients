@@ -16,7 +16,7 @@ steps:
       echo "##[debug] TARGET_TAG ${TARGET_TAG}"
       cat <<EOF > payload.json
       {
-        "ref": "aea-3518-use-release-notes-lambda", 
+        "ref": "$(Build.SourceBranchName)",
         "inputs": {
           "release_tag": "${TARGET_TAG}"
         }

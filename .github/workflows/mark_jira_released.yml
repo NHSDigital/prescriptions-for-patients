@@ -1,7 +1,6 @@
 name: 'Mark jira released'
 
 on:
-  workflow_call:
   workflow_dispatch:
     inputs:
       release_version:

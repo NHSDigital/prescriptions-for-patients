@@ -1,7 +1,6 @@
 name: 'Create rc int confluence release notes'
 
 on:
-  workflow_call:
   workflow_dispatch:
     inputs:
       release_tag:

@@ -11,7 +11,7 @@ steps:
       fi
       cat <<EOF > payload.json
       {
-        "ref": "aea-3518-use-release-notes-lambda", 
+        "ref": "$(Build.SourceBranchName)"
       }
       EOF
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches"

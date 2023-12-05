@@ -18,7 +18,7 @@ steps:
 
       cat <<EOF > payload.json
       {
-        "ref": "aea-3518-use-release-notes-lambda", 
+        "ref": "$(Build.SourceBranchName)"
       }
       EOF
 
@@ -28,7 +28,7 @@ steps:
 
       cat <<EOF > payload.json
       {
-        "ref": "aea-3518-use-release-notes-lambda", 
+        "ref": "$(Build.SourceBranchName)", 
         "inputs": {
           "release_version": "${RELEASE_VERSION}"
         }
