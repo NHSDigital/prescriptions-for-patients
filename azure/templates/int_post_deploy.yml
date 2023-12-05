@@ -1,4 +1,4 @@
-stages:
+steps:
 - template: ./run-tests.yml
   parameters:
     full: true
