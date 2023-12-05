@@ -3,9 +3,9 @@ name: 'Create rc int confluence release notes'
 on:
   workflow_call:
   workflow_dispatch:
-  pull_request:
-  repository_dispatch:
-    types: [create_rc_int_release_notes]
+    inputs:
+      release_tag:
+        required: true
 
 jobs:
   create_rc_int_confluence_release_notes:
@@ -55,5 +55,5 @@ jobs:
       - shell: bash
         name: create release notes
         run: |
-          export release_tag=${{ github.event.client_payload.release_tag }}
+          export release_tag=${{ inputs.release_tag }}
           make publish-pfp-apigee-rc-release-notes-int

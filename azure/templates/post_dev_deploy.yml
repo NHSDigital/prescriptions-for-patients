@@ -12,7 +12,8 @@ steps:
       if [[ -z ${NOTIFY_GITHUB_REPOSITORY} ]]; then
          export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
       fi
-      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches"
-      # curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches" -d '{"event_type": "create_int_release_notes"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
-      # curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches" -d '{"event_type": "create_prod_release_notes"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches"
+      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches" -d '{"ref": "aea-3518-use-release-notes-lambda"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches"
+      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches" -d '{"ref": "aea-3518-use-release-notes-lambda"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
     displayName: Create release notes

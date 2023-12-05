@@ -3,9 +3,9 @@ name: 'Mark jira released'
 on:
   workflow_call:
   workflow_dispatch:
-  pull_request:
-  repository_dispatch:
-    types: [mark_jira_released]
+    inputs:
+      release_version:
+        required: true
 
 jobs:
   mark_jira_released:
@@ -55,5 +55,5 @@ jobs:
       - shell: bash
         name: create release notes
         run: |
-          export release_version=${{ github.event.client_payload.release_version }}
+          export release_version=${{ inputs.release_version }}
           make mark-jira-released
