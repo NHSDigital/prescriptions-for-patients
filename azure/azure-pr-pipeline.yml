@@ -37,9 +37,9 @@ extends:
     apigee_deployments:
       - environment: internal-dev
         pre_deploy:
-          - template: ./templates/post_dev_deploy.yml
-        post_deploy:
           - template: ./templates/post_int_deploy.yml
+        post_deploy:
+          - template: ./templates/post_dev_deploy.yml
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
