@@ -43,7 +43,7 @@ extends:
         pre_deploy:
           - template: ./templates/environment_pre_deploy.yml
         post_deploy:
-          - template: ./templates/int_post_deployment.yml
+          - template: ./templates/int_post_deploy.yml
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
