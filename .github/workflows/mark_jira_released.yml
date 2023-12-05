@@ -1,4 +1,4 @@
-name: 'Create confluence release notes'
+name: 'Mark jira released'
 
 on:
   workflow_call:

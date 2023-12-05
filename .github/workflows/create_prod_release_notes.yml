@@ -1,4 +1,4 @@
-name: 'Create confluence release notes'
+name: 'Create prod confluence release notes'
 
 on:
   workflow_call:
