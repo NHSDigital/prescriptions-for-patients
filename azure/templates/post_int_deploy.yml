@@ -1,0 +1,14 @@
+steps:
+  - bash: |
+      echo "##[debug] Running post int deploy"
+    displayName: run post int deploy
+  # call create release notes
+  - bash: |
+      export NOTIFY_GITHUB_REPOSITORY=$(NOTIFY_GITHUB_REPOSITORY)
+
+      if [[ -z ${NOTIFY_GITHUB_REPOSITORY} ]]; then
+         export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
+      fi
+      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches"
+      # curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches" -d '{"event_type": "create_int_release_notes"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+    displayName: Create release notes

@@ -1,6 +1,0 @@
-steps:
-  - bash: |
-      echo "environment pre deploy"
-    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
-    displayName: environment pre deploy
-    condition: always()

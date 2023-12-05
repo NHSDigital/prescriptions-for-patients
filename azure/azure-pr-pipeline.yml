@@ -29,10 +29,6 @@ variables:
 extends:
   template: azure/common/apigee-deployment.yml@common
   parameters:
-    pre_deploy:
-      - template: ./templates/global_pre_deploy.yml
-    post_deploy:
-      - template: ./templates/global_post_deploy.yml
     service_name: ${{ variables.service_name }} 
     short_service_name: ${{ variables.short_service_name }} 
     service_base_path: ${{ variables.service_base_path }} 
@@ -41,12 +37,14 @@ extends:
     apigee_deployments:
       - environment: internal-dev
         pre_deploy:
-          - template: ./templates/environment_pre_deploy.yml
+          - template: ./templates/post_dev_deploy.yml
         post_deploy:
-          - template: ./templates/int_post_deploy.yml
+          - template: ./templates/post_int_deploy.yml
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
         proxy_path: sandbox
+        pre_deploy:
+          - template: ./templates/post_prod_deploy.yml
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/pre_int_deploy.yml

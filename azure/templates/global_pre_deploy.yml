@@ -1,6 +1,0 @@
-steps:
-  - bash: |
-      echo "global pre deploy"
-    workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
-    displayName: global pre deploy
-    condition: always()
