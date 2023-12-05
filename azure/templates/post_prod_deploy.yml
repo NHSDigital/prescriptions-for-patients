@@ -15,9 +15,26 @@ steps:
       export RELEASE_VERSION=PfP-Apigee-${TARGET_TAG}
       echo "##[debug] RELEASE_VERSION: ${RELEASE_VERSION}"
       echo "##[debug] SERVICE_ARTIFACT_NAME ${SERVICE_ARTIFACT_NAME}"
-      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches"
-      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches" -d '{"ref": "aea-3518-use-release-notes-lambda"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
 
+      cat <<EOF > payload.json
+      {
+        "ref": "aea-3518-use-release-notes-lambda", 
+      }
+      EOF
+
+      echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches"
+      cat payload.json
+      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_prod_release_notes.yml/dispatches" -d  "@./payload.json" --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+
+      cat <<EOF > payload.json
+      {
+        "ref": "aea-3518-use-release-notes-lambda", 
+        "inputs": {
+          "release_version": "${RELEASE_VERSION}"
+        }
+      }
+      EOF
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/mark_jira_released.yml/dispatches"
-      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/mark_jira_released.yml/dispatches" -d '{"ref": "aea-3518-use-release-notes-lambda", "inputs": {"release_version": "'${RELEASE_VERSION}'"}}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+      cat payload.json
+      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/mark_jira_released.yml/dispatches" -d "@./payload.json" --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
     displayName: Create release notes

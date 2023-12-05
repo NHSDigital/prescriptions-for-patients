@@ -9,6 +9,12 @@ steps:
       if [[ -z ${NOTIFY_GITHUB_REPOSITORY} ]]; then
          export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
       fi
+      cat <<EOF > payload.json
+      {
+        "ref": "aea-3518-use-release-notes-lambda", 
+      }
+      EOF
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches"
-      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches" -d '{"ref": "aea-3518-use-release-notes-lambda"}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+      cat payload.json
+      curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_int_release_notes.yml/dispatches" -d "@./payload.json" --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
     displayName: Create release notes
