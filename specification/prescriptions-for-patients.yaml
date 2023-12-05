@@ -138,6 +138,10 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-empty.json"
+                distance-selling-pharmacy:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success-distance-selling.json"
         "4XX":
           description: |
             An error occurred as follows:
