@@ -5,11 +5,12 @@ steps:
   # call create release notes
   - bash: |
       export NOTIFY_GITHUB_REPOSITORY=$(NOTIFY_GITHUB_REPOSITORY)
+      export SERVICE_ARTIFACT_NAME=$(SERVICE_ARTIFACT_NAME)
 
       if [[ -z ${NOTIFY_GITHUB_REPOSITORY} ]]; then
          export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
       fi
-      export TARGET_TAG=`echo $(SERVICE_ARTIFACT_NAME) | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+-[[:alpha:]]\+" | tail -1`
+      export TARGET_TAG=`echo ${SERVICE_ARTIFACT_NAME} | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+-[[:alpha:]]\+" | tail -1`
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches"
       echo "TARGET_TAG ${TARGET_TAG}"
       # curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches" -d '{"event_type": "create_rc_int_release_notes", "client_payload": {"release_tag": "${TARGET_TAG}"}}' --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
