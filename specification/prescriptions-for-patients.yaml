@@ -142,6 +142,10 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with a single prescription excluded.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-single-exclusion.json"
+                prescriptions-excluded:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, with a multiple prescriptions excluded.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
                 distance-selling-pharmacy:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
                   value:
