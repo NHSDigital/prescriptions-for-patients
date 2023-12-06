@@ -6,6 +6,10 @@ steps:
   - bash: |
       export NOTIFY_GITHUB_REPOSITORY=$(NOTIFY_GITHUB_REPOSITORY)
       export SERVICE_ARTIFACT_NAME=$(SERVICE_ARTIFACT_NAME)
+      export BRANCH_NAME=$(Build.SourceBranchName)
+      if [ "${BRANCH_NAME}" = "merge" ]; then
+        export BRANCH_NAME=$(echo "$(System.PullRequest.SourceBranch)" | awk -F/ '{print $NF}')
+      fi
 
       if [[ -z ${NOTIFY_GITHUB_REPOSITORY} ]]; then
          export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
@@ -18,7 +22,7 @@ steps:
 
       cat <<EOF > payload.json
       {
-        "ref": "$(Build.SourceBranchName)"
+        "ref": "${BRANCH_NAME}"
       }
       EOF
 
@@ -28,7 +32,7 @@ steps:
 
       cat <<EOF > payload.json
       {
-        "ref": "$(Build.SourceBranchName)", 
+        "ref": "${BRANCH_NAME}",
         "inputs": {
           "release_version": "${RELEASE_VERSION}"
         }
