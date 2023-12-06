@@ -138,6 +138,15 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-empty.json"
+                prescription-excluded:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, with a single prescription excluded.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success-single-exclusion.json"
+                prescriptions-excluded:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, with a multiple prescriptions excluded.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
+
         "4XX":
           description: |
             An error occurred as follows:
@@ -220,9 +229,20 @@ components:
           type: string
           description: Denotes that the bundle is a list of resources returned as a result of a search.
           enum: [searchset]
+        total:
+          type: number
+          description: |
+            The number of prescription bundles contained within the searchset
+
+            Note that this excludes OperationOutcomes.
         entry:
           type: array
-          description: A collection of resources contained within the Bundle.
+          description: |
+            A collection of resources contained within the Bundle.
+
+            Note that the presence of an OperationOutcome resource as part of the bundle implies that one
+            of a patient's prescriptions have been excluded from the response due to a processing error.
+            An OperationOutcome resource will be included for each prescription that cannot be processed.
           items:
             type: object
             required:
@@ -253,6 +273,7 @@ components:
                     - $ref: "#/components/schemas/OrganisationDispensing-Resource"
                     - $ref: "#/components/schemas/Practitioner-Resource"
                     - $ref: "#/components/schemas/PractitionerRole-Resource"
+                    - $ref: "#/components/schemas/operation-outcome"
     MedicationRequest-Resource:
       type: object
       description: MedicationRequest

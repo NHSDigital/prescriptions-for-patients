@@ -77,3 +77,7 @@ properties:
           type: string
           description: FHIR Path of element(s) related to the error.
           example: Patient.name.given
+        diagnostics:
+          type: string
+          description: A description of the reasoning for including an OperationOutcome
+          example: Some prescriptions have been invalidated so could not be returned.
