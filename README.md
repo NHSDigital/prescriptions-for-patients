@@ -74,6 +74,8 @@ There are the `make` targets defined:
  * `smoketest-prod` -- runs tests marked as smoke test against prod environment
  * `test-prod` -- runs all tests against prod environment
  * `check-licenses` -- checks python and node dependencies for GPL licensed code
+ * `publish-pfp-apigee*` -- calls release notes lambda to create release notes in confluence
+ * `mark-jira-released` -- calls mark jira released lambda to mark jira release as released
 
 ### Testing
 There are some basic end to end tests that run as part of the CI build. These just test _ping and _status and Bundle endpoint are working as expected.   
@@ -107,6 +109,11 @@ This folder contains workflows and templates related to github
 - `continuous-integration.yml`: This workflow template publishes a Github release when merged to master.
 - `dependabot.yml`: Dependabot definition file
 - `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests 
+- `create_int_release_notes.yml`: Workflow for creating int release notes. Called from azure pipeline 
+- `create_prod_release_notes.yml`: Workflow for creating prod release notes. Called from azure pipeline 
+- `create_rc_int_release_notes.yml`: Workflow for creating RC int release notes. Called from azure pipeline 
+- `mark_jira_released.yml`: Workflow for marking jira release as released. Called from azure pipeline 
+
 #### `/azure`:
 
 Contains templates defining Azure Devops pipelines. By default the following pipelines are available:
