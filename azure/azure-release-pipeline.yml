@@ -48,10 +48,10 @@ extends:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
       - environment: internal-qa
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
             parameters:
               full: true
         depends_on:
@@ -61,7 +61,7 @@ extends:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: ref
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
         depends_on:
           - internal_dev
           - ref_manual_approval
