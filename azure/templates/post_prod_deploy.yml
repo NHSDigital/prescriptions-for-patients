@@ -41,4 +41,4 @@ steps:
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/mark_jira_released.yml/dispatches"
       cat payload.json
       curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/mark_jira_released.yml/dispatches" -d "@./payload.json" --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
-    displayName: Create release notes
+    displayName: Create release notes and mark released post prod

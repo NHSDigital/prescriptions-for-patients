@@ -15,7 +15,6 @@ steps:
          export NOTIFY_GITHUB_REPOSITORY=$(Build.Repository.Name)
       fi
       export TARGET_TAG=`echo ${SERVICE_ARTIFACT_NAME} | grep -o "v[0-9]\+\.[0-9]\+\.[0-9]\+-[[:alpha:]]\+" | tail -1`
-      export TARGET_TAG=blargh
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/dispatches"
       echo "##[debug] SERVICE_ARTIFACT_NAME ${SERVICE_ARTIFACT_NAME}"
       echo "##[debug] TARGET_TAG ${TARGET_TAG}"
@@ -30,4 +29,4 @@ steps:
       echo "##[debug] Hitting https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_rc_int_release_notes.yml/dispatches"
       cat payload.json
       curl --fail -q -X POST "https://api.github.com/repos/${NOTIFY_GITHUB_REPOSITORY}/actions/workflows/create_rc_int_release_notes.yml/dispatches" -d "@./payload.json" --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
-    displayName: Create release notes
+    displayName: Create RC release notes pre int
