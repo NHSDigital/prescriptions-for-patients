@@ -143,7 +143,7 @@ paths:
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-single-exclusion.json"
                 prescriptions-excluded:
-                  description: A successful response to a GetMyPrescriptions/Bundle request, with a multiple prescriptions excluded.
+                  description: A successful response to a GetMyPrescriptions/Bundle request, with multiple prescriptions excluded.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
 
@@ -207,8 +207,6 @@ components:
         type: string
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
   schemas:
-    operation-outcome:
-      $ref: schemas/resources/OperationOutcome.yaml
     bundle-response:
       type: object
       required:
@@ -273,7 +271,7 @@ components:
                     - $ref: "#/components/schemas/OrganisationDispensing-Resource"
                     - $ref: "#/components/schemas/Practitioner-Resource"
                     - $ref: "#/components/schemas/PractitionerRole-Resource"
-                    - $ref: "#/components/schemas/operation-outcome"
+                    - $ref: "#/components/schemas/OperationOutcome-Resource"
     MedicationRequest-Resource:
       type: object
       description: MedicationRequest
@@ -304,3 +302,11 @@ components:
       properties:
         resource:
           $ref: schemas/resources/PractitionerRole.yaml
+    OperationOutcome-Resource:
+      type: object
+      description: OperationOutcome
+      properties:
+        resource:
+          $ref: schemas/resources/OperationOutcome.yaml
+    operation-outcome:
+      $ref: schemas/resources/OperationOutcome.yaml
