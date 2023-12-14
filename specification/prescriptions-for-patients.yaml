@@ -151,13 +151,15 @@ paths:
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success/success-distance-selling.json"
 
-        "401":
+        "4XX":
           description: |
             An error occurred as follows:
 
             | HTTP status | Error code          | Description                                                                                                                               |
             | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 401         | `ACCESS_DENIED`     | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
+            | 408         | `timeout`           | Request timed out                                                                                                                         |
+            | 429         | `throttled`         | You have exceeded your application's [rate limit]                                                                                         |
 
             The error code will be included in the returned OperationOutcome (below).
           content:
