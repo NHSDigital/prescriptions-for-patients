@@ -305,6 +305,12 @@ components:
           type: string
           example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
           description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
         resource:
           $ref: schemas/resources/MedicationRequest.yaml
     OrganisationDispensing-Resource:
@@ -315,6 +321,12 @@ components:
           type: string
           example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
           description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
         resource:
           $ref: schemas/resources/Organisation.yaml
     OrganisationPrescribing-Resource:
@@ -325,6 +337,12 @@ components:
           type: string
           example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
           description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
         resource:
           $ref: schemas/resources/Organisation.yaml
     Practitioner-Resource:
@@ -335,6 +353,12 @@ components:
           type: string
           example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
           description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
         resource:
           $ref: schemas/resources/Practitioner.yaml
     PractitionerRole-Resource:
@@ -345,6 +369,12 @@ components:
           type: string
           example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
           description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
         resource:
           $ref: schemas/resources/PractitionerRole.yaml
     OperationOutcome-Resource:
