@@ -43,17 +43,15 @@ extends:
         stage_name: int_manual_approval
       - environment: internal-dev
         post_deploy:
-          - template: ./templates/run-tests.yml
-            parameters:
-              full: true
+          - template: ./templates/post_dev_deploy.yml
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: internal-dev-sandbox
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
       - environment: internal-qa
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
             parameters:
               full: true
         depends_on:
@@ -61,12 +59,9 @@ extends:
           - qa_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
-    #   - environment: internal-qa-sandbox
-    #     post_deploy:
-    #       - template: ./templates/run-tests.yml
       - environment: ref
         post_deploy:
-          - template: ./templates/run-tests.yml
+          - template: ./templates/run_tests.yml
         depends_on:
           - internal_dev
           - ref_manual_approval
@@ -77,12 +72,18 @@ extends:
           - internal_qa
           - int_manual_approval
       - environment: int
+        pre_deploy:
+          - template: ./templates/pre_int_deploy.yml
+        post_deploy:
+          - template: ./templates/post_int_deploy.yml
         depends_on:
           - internal_qa
           - int_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
       - environment: prod
+        post_deploy:
+          - template: ./templates/post_prod_deploy.yml
         depends_on:
           - sandbox
           - int

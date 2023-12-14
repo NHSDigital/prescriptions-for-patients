@@ -25,6 +25,6 @@ properties:
       $ref: ../fragments/address.yaml
   telecom:
     type: array
-    description: The telephone number associated with the organisation.
+    description: The telephone number or Website URL associated with the organisation.
     items:
       $ref: ../fragments/telecom.yaml

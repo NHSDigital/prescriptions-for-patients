@@ -146,6 +146,10 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with multiple prescriptions excluded.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
+                distance-selling-pharmacy:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success-distance-selling.json"
 
         "4XX":
           description: |
@@ -267,7 +271,12 @@ components:
           enum: [collection]
         entry:
           type: array
-          description: A collection of resources contained within the Bundle.
+          description: |
+            A collection of resources contained within the Bundle.
+
+            Note that the presence of an OperationOutcome resource as part of the bundle implies that one
+            of a patient's prescriptions have been excluded from the response due to a processing error.
+            An OperationOutcome resource will be included for each prescription that cannot be processed.
           items:
             oneOf:
               - $ref: "#/components/schemas/MedicationRequest-Resource"
