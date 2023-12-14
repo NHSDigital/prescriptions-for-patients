@@ -129,39 +129,35 @@ paths:
                 prescriptions-present:
                   description: A successful response to a GetMyPrescriptions/Bundle request, containing one prescription.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success.json"
                 prescriptions-present-multiple:
                   description: A successful response to a GetMyPrescriptions/Bundle request, containing multiple prescriptions.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-multiple.json"
                 prescriptions-not-present:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-empty.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-empty.json"
                 prescription-excluded:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with a single prescription excluded.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-single-exclusion.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-single-exclusion.json"
                 prescriptions-excluded:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with multiple prescriptions excluded.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-multiple-exclusion.json"
                 distance-selling-pharmacy:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-distance-selling.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-distance-selling.json"
 
-        "4XX":
+        "401":
           description: |
             An error occurred as follows:
 
             | HTTP status | Error code          | Description                                                                                                                               |
             | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `exception`         | Missing or invalid NHS number in request                                                                                                  |
-            | 401         | `processing`        | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
-            | 404         | `not-found`         | No records found for the NHS number in the request                                                                                        |
-            | 408         | `timeout`           | Request timed out                                                                                                                         |
-            | 429         | `throttled`         | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
+            | 401         | `ACCESS_DENIED`     | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
 
             The error code will be included in the returned OperationOutcome (below).
           content:
@@ -173,8 +169,26 @@ paths:
                   description: |
                     An error response to a GetMyPrescriptions/Bundle request that invalidates the request.
                   value:
-                    $ref: examples/GetMyPrescriptions/Bundle/error.json
+                    $ref: examples/GetMyPrescriptions/Bundle/error/error-401.json
+        "500":
+          description: |
+            An error occurred as follows:
 
+            | HTTP status | Error code          | Description                                                                                                                               |
+            | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 500         | `SERVER_ERROR`      | An internal error has occurred when processing the request.                                                                               |
+
+            The error code will be included in the returned OperationOutcome (below).
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/operation-outcome"
+              examples:
+                example:
+                  description: |
+                    An error response to a GetMyPrescriptions/Bundle request that invalidates the request.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/error/error-500.json
 components:
   parameters:
     BearerAuthorisation:
