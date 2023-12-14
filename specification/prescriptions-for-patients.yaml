@@ -167,8 +167,7 @@ paths:
               examples:
                 example:
                   description: |
-                    An error response to a GetMyPrescriptions/Bundle request.
-                    Resource not found for the given NHS number.
+                    An error response to a GetMyPrescriptions/Bundle request that invalidates the request.
                   value:
                     $ref: examples/GetMyPrescriptions/Bundle/error.json
 
@@ -242,70 +241,103 @@ components:
             of a patient's prescriptions have been excluded from the response due to a processing error.
             An OperationOutcome resource will be included for each prescription that cannot be processed.
           items:
-            type: object
-            required:
-              - resourceType
-              - identifier
-              - type
-              - entry
-            description: A FHIR collection Bundle.
-            properties:
-              resourceType:
-                type: string
-                description: FHIR resource type.
-                default: Bundle
-              id:
-                type: string
-                description: Object ID for the Bundle.
-                example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
-              type:
-                type: string
-                description: Denotes that the bundle is a collection of resources. Representing a Prescription, in this case.
-                enum: [collection]
-              entry:
-                type: array
-                description: A collection of resources contained within the Bundle.
-                items:
-                  oneOf:
-                    - $ref: "#/components/schemas/MedicationRequest-Resource"
-                    - $ref: "#/components/schemas/OrganisationDispensing-Resource"
-                    - $ref: "#/components/schemas/Practitioner-Resource"
-                    - $ref: "#/components/schemas/PractitionerRole-Resource"
-                    - $ref: "#/components/schemas/OperationOutcome-Resource"
+            oneOf:
+              - $ref: "#/components/schemas/PrescriptionBundle"
+              - $ref: "#/components/schemas/OperationOutcome-Resource"
+    PrescriptionBundle:
+      type: object
+      required:
+        - resourceType
+        - identifier
+        - type
+        - entry
+      description: A FHIR collection Bundle.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          default: Bundle
+        id:
+          type: string
+          description: Object ID for the Bundle.
+          example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
+        type:
+          type: string
+          description: Denotes that the bundle is a collection of resources. Representing a Prescription, in this case.
+          enum: [collection]
+        entry:
+          type: array
+          description: A collection of resources contained within the Bundle.
+          items:
+            oneOf:
+              - $ref: "#/components/schemas/MedicationRequest-Resource"
+              - $ref: "#/components/schemas/OrganisationDispensing-Resource"
+              - $ref: "#/components/schemas/Practitioner-Resource"
+              - $ref: "#/components/schemas/PractitionerRole-Resource"
     MedicationRequest-Resource:
       type: object
       description: MedicationRequest
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/MedicationRequest.yaml
     OrganisationDispensing-Resource:
       type: object
       description: Dispensing Organisation
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Organisation.yaml
     OrganisationPrescribing-Resource:
       type: object
       description: Prescribing Organisation
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Organisation.yaml
     Practitioner-Resource:
       type: object
       description: Practitioner
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Practitioner.yaml
     PractitionerRole-Resource:
       type: object
       description: PractitionerRole
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/PractitionerRole.yaml
     OperationOutcome-Resource:
       type: object
       description: OperationOutcome
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: outcome
         resource:
           $ref: schemas/resources/OperationOutcome.yaml
     operation-outcome:

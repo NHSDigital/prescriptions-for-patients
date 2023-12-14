@@ -5,14 +5,14 @@
   },
   "issue": [
     {
-      "code": "not-found",
+      "code": "invalid",
       "severity": "error",
       "details": {
         "coding": [
           {
             "system": "https://fhir.nhs.uk/CodeSystem/Spine-ErrorOrWarningCode",
-            "code": "RESOURCE_NOT_FOUND",
-            "display": "Resource not found"
+            "code": "INVALID_VALUE",
+            "display": "Provided value is invalid"
           }
         ]
       }
