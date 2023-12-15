@@ -159,7 +159,7 @@ paths:
             | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
             | 401         | `ACCESS_DENIED`     | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
             | 408         | `timeout`           | Request timed out                                                                                                                         |
-            | 429         | `throttled`         | You have exceeded your application's [rate limit]                                                                                         |
+            | 429         | `throttled`         | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
             The error code will be included in the returned OperationOutcome (below).
           content:
