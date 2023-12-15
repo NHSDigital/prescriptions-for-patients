@@ -129,27 +129,27 @@ paths:
                 prescriptions-present:
                   description: A successful response to a GetMyPrescriptions/Bundle request, containing one prescription.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success.json"
                 prescriptions-present-multiple:
                   description: A successful response to a GetMyPrescriptions/Bundle request, containing multiple prescriptions.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-multiple.json"
                 prescriptions-not-present:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-empty.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-empty.json"
                 prescription-excluded:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with a single prescription excluded.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-single-exclusion.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-single-exclusion.json"
                 prescriptions-excluded:
-                  description: A successful response to a GetMyPrescriptions/Bundle request, with a multiple prescriptions excluded.
+                  description: A successful response to a GetMyPrescriptions/Bundle request, with multiple prescriptions excluded.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-multiple-exclusion.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-multiple-exclusion.json"
                 distance-selling-pharmacy:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
                   value:
-                    $ref: "examples/GetMyPrescriptions/Bundle/success-distance-selling.json"
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-distance-selling.json"
 
         "4XX":
           description: |
@@ -157,9 +157,7 @@ paths:
 
             | HTTP status | Error code          | Description                                                                                                                               |
             | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-            | 400         | `exception`         | Missing or invalid NHS number in request                                                                                                  |
-            | 401         | `processing`        | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
-            | 404         | `not-found`         | No records found for the NHS number in the request                                                                                        |
+            | 401         | `ACCESS_DENIED`     | Missing or invalid OAuth 2.0 bearer token in request                                                                                      |
             | 408         | `timeout`           | Request timed out                                                                                                                         |
             | 429         | `throttled`         | You have exceeded your application's [rate limit](https://digital.nhs.uk/developer/guides-and-documentation/reference-guide#rate-limits). |
 
@@ -171,11 +169,28 @@ paths:
               examples:
                 example:
                   description: |
-                    An error response to a GetMyPrescriptions/Bundle request.
-                    Resource not found for the given NHS number.
+                    An error response to a GetMyPrescriptions/Bundle request that invalidates the request.
                   value:
-                    $ref: examples/GetMyPrescriptions/Bundle/error.json
+                    $ref: examples/GetMyPrescriptions/Bundle/error/error-401.json
+        "500":
+          description: |
+            An error occurred as follows:
 
+            | HTTP status | Error code          | Description                                                                                                                               |
+            | ----------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+            | 500         | `SERVER_ERROR`      | An internal error has occurred when processing the request.                                                                               |
+
+            The error code will be included in the returned OperationOutcome (below).
+          content:
+            application/fhir+json:
+              schema:
+                $ref: "#/components/schemas/operation-outcome"
+              examples:
+                example:
+                  description: |
+                    An error response to a GetMyPrescriptions/Bundle request that invalidates the request.
+                  value:
+                    $ref: examples/GetMyPrescriptions/Bundle/error/error-500.json
 components:
   parameters:
     BearerAuthorisation:
@@ -211,14 +226,15 @@ components:
         type: string
         example: 11C46F5F-CDEF-4865-94B2-0EE0EDCC26DA
   schemas:
-    operation-outcome:
-      $ref: schemas/resources/OperationOutcome.yaml
     bundle-response:
       type: object
       required:
-        - entry
         - resourceType
+        - id
+        - meta
         - type
+        - total
+        - entry
       description: A FHIR searchset Bundle.
       properties:
         resourceType:
@@ -229,6 +245,14 @@ components:
           type: string
           description: Object ID for the Bundle.
           example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
+        meta:
+          type: object
+          description: Metadata about the bundle
+          properties:
+            lastUpdated:
+              type: string
+              description: Datetime of the bundle's creation
+              example: "2022-11-21T14:00:00+00:00"
         type:
           type: string
           description: Denotes that the bundle is a list of resources returned as a result of a search.
@@ -248,63 +272,122 @@ components:
             of a patient's prescriptions have been excluded from the response due to a processing error.
             An OperationOutcome resource will be included for each prescription that cannot be processed.
           items:
-            type: object
-            required:
-              - resourceType
-              - identifier
-              - type
-              - entry
-            description: A FHIR collection Bundle.
-            properties:
-              resourceType:
-                type: string
-                description: FHIR resource type.
-                default: Bundle
-              id:
-                type: string
-                description: Object ID for the Bundle.
-                example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
-              type:
-                type: string
-                description: Denotes that the bundle is a collection of resources. Representing a Prescription, in this case.
-                enum: [collection]
-              entry:
-                type: array
-                description: A collection of resources contained within the Bundle.
-                items:
-                  oneOf:
-                    - $ref: "#/components/schemas/MedicationRequest-Resource"
-                    - $ref: "#/components/schemas/OrganisationDispensing-Resource"
-                    - $ref: "#/components/schemas/Practitioner-Resource"
-                    - $ref: "#/components/schemas/PractitionerRole-Resource"
-                    - $ref: "#/components/schemas/operation-outcome"
+            oneOf:
+              - $ref: "#/components/schemas/PrescriptionBundle"
+              - $ref: "#/components/schemas/OperationOutcome-Resource"
+    PrescriptionBundle:
+      type: object
+      required:
+        - fullUrl
+        - search
+        - resource
+      properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained Bundle
+        search:
+          type: object
+          properties:
+            mode:
+              type: string
+              example: match
+        resource:
+          $ref: "#/components/schemas/CollectionBundle"
+    CollectionBundle:
+      type: object
+      required:
+        - resourceType
+        - identifier
+        - type
+        - entry
+      description: A FHIR collection Bundle.
+      properties:
+        resourceType:
+          type: string
+          description: FHIR resource type.
+          default: Bundle
+        id:
+          type: string
+          description: Object ID for the Bundle.
+          example: 164996aa-29eb-4f14-a5ac-4b556a7baf6e
+        type:
+          type: string
+          description: Denotes that the bundle is a collection of resources. Representing a Prescription, in this case.
+          enum: [collection]
+        entry:
+          type: array
+          description: |
+            A collection of resources contained within the Bundle.
+
+            Note that the presence of an OperationOutcome resource as part of the bundle implies that one
+            of a patient's prescriptions have been excluded from the response due to a processing error.
+            An OperationOutcome resource will be included for each prescription that cannot be processed.
+          items:
+            oneOf:
+              - $ref: "#/components/schemas/MedicationRequest-Resource"
+              - $ref: "#/components/schemas/OrganisationDispensing-Resource"
+              - $ref: "#/components/schemas/Practitioner-Resource"
+              - $ref: "#/components/schemas/PractitionerRole-Resource"
     MedicationRequest-Resource:
       type: object
       description: MedicationRequest
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/MedicationRequest.yaml
     OrganisationDispensing-Resource:
       type: object
       description: Dispensing Organisation
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Organisation.yaml
     OrganisationPrescribing-Resource:
       type: object
       description: Prescribing Organisation
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Organisation.yaml
     Practitioner-Resource:
       type: object
       description: Practitioner
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/Practitioner.yaml
     PractitionerRole-Resource:
       type: object
       description: PractitionerRole
       properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
         resource:
           $ref: schemas/resources/PractitionerRole.yaml
+    OperationOutcome-Resource:
+      type: object
+      description: OperationOutcome
+      properties:
+        fullUrl:
+          type: string
+          example: urn:uuid:fedef61e-bc62-452e-91c0-6f44ad2d5c0c
+          description: The FHIR urn of the contained resource
+        resource:
+          $ref: schemas/resources/OperationOutcome.yaml
+    operation-outcome:
+      $ref: schemas/resources/OperationOutcome.yaml
