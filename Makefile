@@ -109,9 +109,8 @@ publish-pfp-apigee-release-notes-int:
 		--payload file:///tmp/payload.json /tmp/out.txt
 	cat /tmp/out.txt
 
-publish-pfp-apigee-rc-release-notes-int: guard-release_tag
-	int_tag=$$(curl -s "https://int.api.service.nhs.uk/prescriptions-for-patients/_ping" | jq --raw-output ".version"); \
-	echo { \"createReleaseCandidate\": \"true\", \"releasePrefix\": \"PfP-Apigee-\", \"currentTag\": \"$$int_tag\", \"targetTag\": \"$$release_tag\", \"repoName\": \"prescriptions-for-patients\", \"targetEnvironment\": \"INT\", \"productName\": \"Prescriptions for Patients Apigee layer\", \"releaseNotesPageId\": \"710051478\", \"releaseNotesPageTitle\": \"PfP-APigee-$$release_tag - Deployed to [INT] on $$(date +'%d-%m-%y')\" } > /tmp/payload.json
+publish-pfp-apigee-rc-release-notes-int: guard-release_tag guard-current_tag
+	echo { \"createReleaseCandidate\": \"true\", \"releasePrefix\": \"PfP-Apigee-\", \"currentTag\": \"$$current_tag\", \"targetTag\": \"$$release_tag\", \"repoName\": \"prescriptions-for-patients\", \"targetEnvironment\": \"INT\", \"productName\": \"Prescriptions for Patients Apigee layer\", \"releaseNotesPageId\": \"710051478\", \"releaseNotesPageTitle\": \"PfP-APigee-$$release_tag - Deployed to [INT] on $$(date +'%d-%m-%y')\" } > /tmp/payload.json
 	aws lambda invoke \
 		--function-name "release-notes-createReleaseNotes" \
 		--cli-binary-format raw-in-base64-out \
