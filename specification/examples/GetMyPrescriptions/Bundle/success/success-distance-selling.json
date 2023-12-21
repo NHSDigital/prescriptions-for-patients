@@ -340,13 +340,8 @@
                 {
                   "use": "work",
                   "type": "both",
-                  "line": [
-                    "Unit 4B",
-                    "Victoria Road"
-                  ],
-                  "city": "Leeds",
-                  "district": "West Yorkshire",
-                  "postalCode": "LS1 2LA"
+                  "text": "Unit 4B, Victoria Road",
+                  "postalCode": "TR1 3FF"
                 }
               ]
             }
