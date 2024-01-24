@@ -28,13 +28,12 @@ RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3; \
 
 ENV PATH="$PATH:/home/vscode/.asdf/bin/:/workspaces/prescriptions-for-patients/node_modules/.bin"
 
-
 # Install ASDF plugins
 RUN asdf plugin add python; \
     asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git; \
     asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git; \
-    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-
+    asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git; \
+    asdf plugin add actionlint;
 
 WORKDIR /workspaces/prescriptions-for-patients
 ADD .tool-versions /workspaces/prescriptions-for-patients/.tool-versions
