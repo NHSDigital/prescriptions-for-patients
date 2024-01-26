@@ -26,6 +26,9 @@ lint:
 	find . -name '*.py' -not -path '**/.venv/*' | xargs poetry run flake8
 	shellcheck scripts/*.sh
 
+lint-githubactions:
+	actionlint
+
 #Removes build/ + dist/ directories
 clean:
 	rm -rf build

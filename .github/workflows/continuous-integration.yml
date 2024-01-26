@@ -42,11 +42,11 @@ jobs:
           poetry install
 
       - name: Set SPEC_VERSION env var for merges to master
-        run: echo "SPEC_VERSION=$(poetry run python scripts/calculate_version.py)" >> $GITHUB_ENV
+        run: echo "SPEC_VERSION=$(poetry run python scripts/calculate_version.py)" >> "$GITHUB_ENV"
         if: github.ref == 'refs/heads/master'
 
       - name: Set SPEC_VERSION env var for tags
-        run: echo "SPEC_VERSION=${{  github.ref_name }}" >> $GITHUB_ENV
+        run: echo "SPEC_VERSION=${{  github.ref_name }}" >> "$GITHUB_ENV"
         if: github.ref != 'refs/heads/master'
 
       - name: Create release (master only)

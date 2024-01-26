@@ -31,6 +31,14 @@ repos:
         files: ^specification
         pass_filenames: false
 
+      - id: lint-githubactions
+        name: Lint github actions
+        entry: make
+        args: ["lint-githubactions"]
+        language: system
+        files: ^.github
+        types_or: [yaml]
+        pass_filenames: false
 
 fail_fast: true
 default_stages: [commit]
