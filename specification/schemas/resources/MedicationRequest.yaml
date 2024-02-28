@@ -11,6 +11,7 @@ required:
   - courseOfTherapyType
   - dispenseRequest
   - substitution
+  - note
 description: Information about a specific line item within a prescription.
 properties:
   resourceType:
@@ -112,3 +113,13 @@ properties:
       allowedBoolean:
         type: boolean
         enum: [false]
+  note:
+    type: array
+    items:
+      type: object
+      properties:
+        text:
+          type: string
+          description: |
+            This note can be used to allow dispensers to provide additional information to the patient about the collection or delivery of their prescription item. For instance, the access code if the prescription is in a collection locked.
+          example: "Locker code: 556701"
