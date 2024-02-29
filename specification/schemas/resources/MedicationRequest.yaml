@@ -11,7 +11,6 @@ required:
   - courseOfTherapyType
   - dispenseRequest
   - substitution
-  - note
 description: Information about a specific line item within a prescription.
 properties:
   resourceType:
@@ -21,11 +20,9 @@ properties:
   status:
     type: string
     description: |
-      The status of the line item within the prescription.
-      Active means the item is ready to be dispensed or currently in the process of being dispensed.
-      Cancelled means the item has been cancelled by the prescriber.
-      Stopped means the item has not been issued to the patient by the dispenser.
-    enum: [active, cancelled, stopped]
+      Indicator to identify prescription items that are in a terminal state,
+        such as collected or dispatched
+    enum: [completed, active]
   intent:
     type: string
     description: The intent of a MedicationRequest object. Required by the FHIR standard but offers no patient value and can be ignored.
@@ -115,11 +112,27 @@ properties:
         enum: [false]
   note:
     type: array
+    description: |
+      This note can be used to allow dispensers to provide additional information
+      to the patient about the collection or delivery of their prescription item.
+      For instance, the access code if the prescription is in a collection locked.
     items:
       type: object
       properties:
         text:
           type: string
-          description: |
-            This note can be used to allow dispensers to provide additional information to the patient about the collection or delivery of their prescription item. For instance, the access code if the prescription is in a collection locked.
           example: "Locker code: 556701"
+  extension:
+    type: array
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+          example: "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory"
+        extension:
+          type: array
+          items:
+            anyOf:
+              - $ref: ../fragments/medicationRequest/statusDate.yaml
+              - $ref: ../fragments/medicationRequest/status.yaml

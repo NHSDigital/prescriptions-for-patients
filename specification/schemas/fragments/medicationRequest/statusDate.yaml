@@ -1,0 +1,10 @@
+type: object
+description: |
+  Date and time at which the item status was updated
+properties:
+  url:
+    type: string
+    example: "statusDate"
+  valueDateTime: 
+    type: datetime
+    example: "2024-01-30T12:01:24Z"

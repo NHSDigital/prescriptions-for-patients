@@ -1,0 +1,38 @@
+type: object
+description: |
+  The status of the line item within the prescription.
+  'Prescriber Approved' means the item is ready to be dispensed.
+  'With Pharmacy' means the item has been downloaded by the pharmacy
+    but is not ready to collect.
+  'Ready to Collect' means the pharmacy has prepared the prescription
+    item and it's ready to collect.
+  'Dispatched' means the pharmacy has prepared the prescription item
+    and it has been dispatched for delivery.
+  'Collected' means that the patient or patient carer has collected
+    the prescription item.
+  'Unknown' means that we do not have prescription tracking data for
+    the prescription, possibly because the pharmacy is not using a
+    dispensing system which is onboarded to the NPPT service.
+properties:
+  url:
+    type: string
+    example: "status"
+  valueCoding:
+    type: object
+    properties:
+      code:
+        type: string
+        example: "9001"
+      display:
+        type: string
+        enum:
+          - Prescriber Approved
+          - With Pharmacy
+          - Ready to Collect
+          - Dispatched
+          - Collected
+          - Unknown
+        example: "Ready to Collect"
+      system:
+        type: string
+        example: "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt"
