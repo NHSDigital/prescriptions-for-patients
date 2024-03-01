@@ -56,7 +56,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-01-17"
                 },
                 "quantity": {
                   "value": 20,
@@ -70,7 +70,26 @@
               },
               "substitution": {
                 "allowedBoolean": false
-              }
+              },
+              "extension": [
+                  {
+                      "url": "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory",
+                      "extension": [
+                          {
+                              "url": "statusDate",
+                              "valueDateTime": "2024-02-01T11:14:21Z"
+                          },
+                          {
+                              "url": "status",
+                              "valueCoding": {
+                                  "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
+                                  "code": "0008",
+                                  "display": "With Pharmacy"
+                              }
+                          }
+                      ]
+                  }
+              ]
             }
           },
           {
@@ -112,7 +131,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-01-17"
                 },
                 "quantity": {
                   "value": 20,
@@ -126,7 +145,26 @@
               },
               "substitution": {
                 "allowedBoolean": false
-              }
+              },
+              "extension": [
+                  {
+                      "url": "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory",
+                      "extension": [
+                          {
+                              "url": "statusDate",
+                              "valueDateTime": "2024-02-01T11:14:21Z"
+                          },
+                          {
+                              "url": "status",
+                              "valueCoding": {
+                                  "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
+                                  "code": "0008",
+                                  "display": "With Pharmacy"
+                              }
+                          }
+                      ]
+                  }
+              ]
             }
           },
           {
@@ -168,7 +206,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-01-17"
                 },
                 "quantity": {
                   "value": 30,
@@ -182,14 +220,33 @@
               },
               "substitution": {
                 "allowedBoolean": false
-              }
+              },
+              "extension": [
+                  {
+                      "url": "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory",
+                      "extension": [
+                          {
+                              "url": "statusDate",
+                              "valueDateTime": "2024-02-01T11:14:21Z"
+                          },
+                          {
+                              "url": "status",
+                              "valueCoding": {
+                                  "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
+                                  "code": "0008",
+                                  "display": "With Pharmacy"
+                              }
+                          }
+                      ]
+                  }
+              ]
             }
           },
           {
             "fullUrl": "urn:uuid:5cb17f5a-11ac-4e18-825f-6470467238b3",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "cancelled",
+              "status": "active",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -224,7 +281,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-01-17"
                 },
                 "quantity": {
                   "value": 30,
@@ -238,7 +295,26 @@
               },
               "substitution": {
                 "allowedBoolean": false
-              }
+              },
+              "extension": [
+                  {
+                      "url": "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory",
+                      "extension": [
+                          {
+                              "url": "statusDate",
+                              "valueDateTime": "2024-02-01T11:14:21Z"
+                          },
+                          {
+                              "url": "status",
+                              "valueCoding": {
+                                  "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
+                                  "code": "0008",
+                                  "display": "With Pharmacy"
+                              }
+                          }
+                      ]
+                  }
+              ]
             }
           },
           {

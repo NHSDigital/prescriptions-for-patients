@@ -20,11 +20,9 @@ properties:
   status:
     type: string
     description: |
-      The status of the line item within the prescription.
-      Active means the item is ready to be dispensed or currently in the process of being dispensed.
-      Cancelled means the item has been cancelled by the prescriber.
-      Stopped means the item has not been issued to the patient by the dispenser.
-    enum: [active, cancelled, stopped]
+      Indicator to identify prescription items that are in a terminal state,
+        such as collected or dispatched
+    enum: [completed, active]
   intent:
     type: string
     description: The intent of a MedicationRequest object. Required by the FHIR standard but offers no patient value and can be ignored.
@@ -72,9 +70,9 @@ properties:
         properties:
           start:
             type: string
-            description: The prescription's start date, could be after the precription is created for a post dated prescription.
+            description: The prescription's start date, could be after the prescription is created for a post dated prescription.
             format: date
-            example: "2023-06-02"
+            example: "2024-02-27"
       performer:
         type: object
         description: A reference to either the nominated dispensing organisation or the organisation currently processing the prescription if it has already been downloaded.
@@ -112,3 +110,29 @@ properties:
       allowedBoolean:
         type: boolean
         enum: [false]
+  note:
+    type: array
+    description: |
+      This note can be used to allow dispensers to provide additional information
+      to the patient about the collection or delivery of their prescription item.
+      For instance, the access code if the prescription is in a collection locked.
+    items:
+      type: object
+      properties:
+        text:
+          type: string
+          example: "Locker code: 556701"
+  extension:
+    type: array
+    items:
+      type: object
+      properties:
+        url:
+          type: string
+          example: "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory"
+        extension:
+          type: array
+          items:
+            anyOf:
+              - $ref: ../fragments/medicationRequest/statusDate.yaml
+              - $ref: ../fragments/medicationRequest/status.yaml
