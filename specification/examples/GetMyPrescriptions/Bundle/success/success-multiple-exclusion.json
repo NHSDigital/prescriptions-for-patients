@@ -56,7 +56,7 @@
                             },
                             "dispenseRequest": {
                                 "validityPeriod": {
-                                    "start": "2022-10-21"
+                                    "start": "2024-01-25"
                                 },
                                 "quantity": {
                                     "value": 20,

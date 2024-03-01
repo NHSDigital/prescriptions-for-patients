@@ -70,9 +70,9 @@ properties:
         properties:
           start:
             type: string
-            description: The prescription's start date, could be after the precription is created for a post dated prescription.
+            description: The prescription's start date, could be after the prescription is created for a post dated prescription.
             format: date
-            example: "2023-06-02"
+            example: "2024-02-27"
       performer:
         type: object
         description: A reference to either the nominated dispensing organisation or the organisation currently processing the prescription if it has already been downloaded.

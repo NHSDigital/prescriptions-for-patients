@@ -62,7 +62,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-01-16"
                 },
                 "quantity": {
                   "value": 20,
@@ -83,7 +83,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-01-18T08:13:24Z"
                           },
                           {
                               "url": "status",

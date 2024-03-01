@@ -8,4 +8,4 @@ properties:
   valueDateTime: 
     type: string
     format: date-time
-    example: "2024-01-30T12:01:24Z"
+    example: "2024-03-01T08:27:14Z"

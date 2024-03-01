@@ -56,7 +56,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-02-27"
                 },
                 "quantity": {
                   "value": 20,
@@ -77,7 +77,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-03-02T14:04:36Z"
                           },
                           {
                               "url": "status",
@@ -131,7 +131,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-02-27"
                 },
                 "quantity": {
                   "value": 20,
@@ -152,7 +152,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-03-02T14:04:36Z"
                           },
                           {
                               "url": "status",
@@ -206,7 +206,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-02-27"
                 },
                 "quantity": {
                   "value": 30,
@@ -227,7 +227,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-03-02T14:04:36Z"
                           },
                           {
                               "url": "status",
@@ -281,7 +281,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2022-10-21"
+                  "start": "2024-02-27"
                 },
                 "quantity": {
                   "value": 30,
@@ -302,7 +302,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-03-02T14:04:36Z"
                           },
                           {
                               "url": "status",
@@ -459,7 +459,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2023-03-14"
+                  "start": "2024-02-11"
                 },
                 "quantity": {
                   "value": 30,
@@ -477,7 +477,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-01-30T12:01:24Z"
+                              "valueDateTime": "2024-02-19T16:37:14Z"
                           },
                           {
                               "url": "status",
@@ -598,7 +598,7 @@
               },
               "dispenseRequest": {
                 "validityPeriod": {
-                  "start": "2023-02-11"
+                  "start": "2023-10-17"
                 },
                 "quantity": {
                   "value": 30,
@@ -616,7 +616,7 @@
                       "extension": [
                           {
                               "url": "statusDate",
-                              "valueDateTime": "2024-02-25T14:32:14Z"
+                              "valueDateTime": "2023-10-15T11:12:32Z"
                           },
                           {
                               "url": "status",
