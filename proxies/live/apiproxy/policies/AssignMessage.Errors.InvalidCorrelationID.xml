@@ -10,7 +10,7 @@
     </AssignVariable>
     <AssignVariable>
         <Name>pfp.error.coding.display</Name>
-        <Value>Provided value is invalid</Value>
+        <Value>Invalid value</Value>
     </AssignVariable>
     <AssignVariable>
         <Name>pfp.error.diagnostics</Name>
