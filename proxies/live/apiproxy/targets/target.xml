@@ -57,7 +57,7 @@
       </Step>
     </FaultRule>
     <FaultRule name="invalid_correlation_id">
-      <Condition>(original-request-details.header.X-Correlation-ID != null) and (not original-request-details.header.X-Correlation-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$")</Condition>
+      <Condition>not original-request-details.header.X-Correlation-ID ~~ "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"</Condition>
       <Step>
         <Name>AssignMessage.Errors.InvalidCorrelationID</Name>
       </Step>
