@@ -16,14 +16,11 @@ description: |
 properties:
   url:
     type: string
-    example: "status"
+    enum: ["status"]
   valueCoding:
     type: object
     properties:
       code:
-        type: string
-        example: "9001"
-      display:
         type: string
         enum:
           - Prescriber Approved
@@ -32,7 +29,6 @@ properties:
           - Dispatched
           - Collected
           - Unknown
-        example: "Ready to Collect"
       system:
         type: string
         example: "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt"

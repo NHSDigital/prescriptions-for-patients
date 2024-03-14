@@ -110,18 +110,6 @@ properties:
       allowedBoolean:
         type: boolean
         enum: [false]
-  note:
-    type: array
-    description: |
-      This note can be used to allow dispensers to provide additional information
-      to the patient about the collection or delivery of their prescription item.
-      For instance, the access code if the prescription is in a collection locked.
-    items:
-      type: object
-      properties:
-        text:
-          type: string
-          example: "Locker code: 556701"
   extension:
     type: array
     items:

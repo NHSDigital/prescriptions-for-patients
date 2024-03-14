@@ -4,7 +4,7 @@ description: |
 properties:
   url:
     type: string
-    example: "statusDate"
+    enum: ["statusDate"]
   valueDateTime: 
     type: string
     format: date-time
