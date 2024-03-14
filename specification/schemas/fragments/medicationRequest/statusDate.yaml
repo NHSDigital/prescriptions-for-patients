@@ -1,6 +1,9 @@
 type: object
 description: |
   Date and time at which the item status was updated
+required:
+  - url
+  - valueDateTime
 properties:
   url:
     type: string
