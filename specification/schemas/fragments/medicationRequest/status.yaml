@@ -13,17 +13,20 @@ description: |
   'Unknown' means that we do not have prescription tracking data for
     the prescription, possibly because the pharmacy is not using a
     dispensing system which is onboarded to the NPPT service.
+required: 
+  - url
+  - valueCoding
 properties:
   url:
     type: string
-    example: "status"
+    enum: ["status"]
   valueCoding:
     type: object
+    required:
+      - code
+      - system
     properties:
       code:
-        type: string
-        example: "9001"
-      display:
         type: string
         enum:
           - Prescriber Approved
@@ -32,7 +35,6 @@ properties:
           - Dispatched
           - Collected
           - Unknown
-        example: "Ready to Collect"
       system:
         type: string
-        example: "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt"
+        enum: ["https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt"]

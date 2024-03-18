@@ -110,26 +110,16 @@ properties:
       allowedBoolean:
         type: boolean
         enum: [false]
-  note:
-    type: array
-    description: |
-      This note can be used to allow dispensers to provide additional information
-      to the patient about the collection or delivery of their prescription item.
-      For instance, the access code if the prescription is in a collection locked.
-    items:
-      type: object
-      properties:
-        text:
-          type: string
-          example: "Locker code: 556701"
   extension:
     type: array
     items:
       type: object
+      description: Will contain the most recent status update for the prescription item provided in the prescription status update API.
+      required: [url, extension]
       properties:
         url:
           type: string
-          example: "https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory"
+          enum: ["https://fhir.nhs.uk/StructureDefinition/Extension-DM-PrescriptionStatusHistory"]
         extension:
           type: array
           items:
