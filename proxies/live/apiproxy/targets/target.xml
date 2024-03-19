@@ -78,9 +78,10 @@
     <SSLInfo>
       <Enabled>true</Enabled>
     </SSLInfo>
-    <LoadBalancer>
+    <!-- <LoadBalancer>
       <Server name="prescriptions-for-patients" />
-    </LoadBalancer>
+    </LoadBalancer> -->
+    <URL>https://httpbin.org/delay/10</URL>
     <Properties>
       <Property name="io.timeout.millis">10000</Property>
     </Properties>
