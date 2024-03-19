@@ -21,5 +21,8 @@
       <LoadBalancer>
         <Server name="prescriptions-for-patients" />
       </LoadBalancer>
+      <Properties>
+        <Property name="io.timeout.millis">10000</Property>
+      </Properties>
     </HTTPTargetConnection>
 </TargetEndpoint>
