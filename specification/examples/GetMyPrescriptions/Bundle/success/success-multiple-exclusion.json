@@ -83,8 +83,7 @@
                                             "url": "status",
                                             "valueCoding": {
                                                 "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                                "code": "9001",
-                                                "display": "Ready to Collect"
+                                                "code": "Ready to Collect"
                                             }
                                         }
                                     ]

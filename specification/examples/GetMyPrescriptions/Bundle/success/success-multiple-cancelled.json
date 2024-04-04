@@ -83,8 +83,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0005",
-                                  "display": "Prescriber Cancelled"
+                                  "code": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -158,8 +157,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0002",
-                                  "display": "Not Dispensed"
+                                  "code": "Not Dispensed"
                               }
                           }
                       ]
@@ -233,8 +231,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0005",
-                                  "display": "Prescriber Cancelled"
+                                  "code": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -308,8 +305,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0002",
-                                  "display": "Not Dispensed"
+                                  "code": "Not Dispensed"
                               }
                           }
                       ]
@@ -483,8 +479,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0005",
-                                  "display": "Prescriber Cancelled"
+                                  "code": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -622,8 +617,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0002",
-                                  "display": "Not Dispensed"
+                                  "code": "Not Dispensed"
                               }
                           }
                       ]

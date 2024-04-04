@@ -83,8 +83,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "With Pharmacy"
                               }
                           }
                       ]
@@ -158,8 +157,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "With Pharmacy"
                               }
                           }
                       ]
@@ -233,8 +231,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "With Pharmacy"
                               }
                           }
                       ]
@@ -308,8 +305,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "With Pharmacy"
                               }
                           }
                       ]
