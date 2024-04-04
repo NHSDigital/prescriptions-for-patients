@@ -138,6 +138,10 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where no prescriptions were found.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success/success-empty.json"
+                prescriptions-cancelled-not-dispensed:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, where prescriptions have been cancelled or not dispensed.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-multiple-cancelled.json"
                 prescription-excluded:
                   description: A successful response to a GetMyPrescriptions/Bundle request, with a single prescription excluded.
                   value:

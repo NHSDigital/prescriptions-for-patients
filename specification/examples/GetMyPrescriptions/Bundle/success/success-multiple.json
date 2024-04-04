@@ -83,8 +83,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "Ready to Collect"
+                                  "code": "With Pharmacy - Preparing Remainder"
                               }
                           }
                       ]
@@ -158,8 +157,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "Ready to Collect"
+                                  "code": "Ready to Collect - Partial"
                               }
                           }
                       ]
@@ -233,8 +231,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "With Pharmacy"
                               }
                           }
                       ]
@@ -308,8 +305,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "Ready to Collect"
+                                  "code": "Ready to Collect"
                               }
                           }
                       ]
@@ -483,8 +479,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0001",
-                                  "display": "Prescriber Approved"
+                                  "code": "Prescriber Approved"
                               }
                           }
                       ]
@@ -622,8 +617,7 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0003",
-                                  "display": "Dispatched"
+                                  "code": "Dispatched"
                               }
                           }
                       ]

@@ -89,8 +89,7 @@
                                             "url": "status",
                                             "valueCoding": {
                                                 "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                                "code": "0008",
-                                                "display": "Unknown"
+                                                "code": "With Pharmacy but Tracking not Supported"
                                             }
                                         }
                                     ]
