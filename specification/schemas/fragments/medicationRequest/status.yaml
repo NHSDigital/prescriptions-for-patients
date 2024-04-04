@@ -1,18 +1,27 @@
 type: object
 description: |
   The status of the line item within the prescription.
-  'Prescriber Approved' means the item is ready to be dispensed.
-  'With Pharmacy' means the item has been downloaded by the pharmacy
+  * 'Prescriber Approved' means the item is ready to be dispensed.
+  * 'Prescriber Cancelled' means the item has been cancelled by the prescriber, can be included in a prescription 
+    where other items have not been cancelled. Patient should be advised to contact prescriber to find out 
+    the reason for cancellation.
+  * 'With Pharmacy' means the item has been downloaded by the pharmacy
     but is not ready to collect.
-  'Ready to Collect' means the pharmacy has prepared the prescription
-    item and it's ready to collect.
-  'Dispatched' means the pharmacy has prepared the prescription item
-    and it has been dispatched for delivery.
-  'Collected' means that the patient or patient carer has collected
-    the prescription item.
-  'Unknown' means that we do not have prescription tracking data for
+  * 'With Pharmacy but Tracking not Supported' means that we do not have prescription tracking data for
     the prescription, possibly because the pharmacy is not using a
     dispensing system which is onboarded to the NPPT service.
+  * 'With Pharmacy - Preparing Remainder' means the prescription has been partially dispensed, 
+    but the remaining medication is still with the pharmacy to prepare and dispense.
+  * 'Ready to Collect' means the pharmacy has prepared the prescription
+    item and it's ready to collect.
+  * 'Ready to Collect - Partial' means the prescription has been partially dispensed, but the remaining 
+    medication is still with the pharmacy to prepare and dispense.
+  * 'Not Dispensed' means the prescription item has not been dispensed, which may be for a number of reasons 
+    including the pharmacist deciding it's clinically unsuitable or the patient reporting side effects.
+  * 'Dispatched' means the pharmacy has prepared the prescription item
+    and it has been dispatched for delivery.
+  * 'Collected' means that the patient or patient carer has collected
+    the prescription item.
 required: 
   - url
   - valueCoding
@@ -30,11 +39,16 @@ properties:
         type: string
         enum:
           - Prescriber Approved
+          - Prescriber Cancelled
           - With Pharmacy
+          - With Pharmacy but Tracking not Supported
+          - With Pharmacy - Preparing Remainder
           - Ready to Collect
+          - Ready to Collect - Partial
+          - Not Dispensed
           - Dispatched
           - Collected
-          - Unknown
+
       system:
         type: string
         enum: ["https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt"]

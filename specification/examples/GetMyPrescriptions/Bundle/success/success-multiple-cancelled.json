@@ -21,7 +21,7 @@
             "fullUrl": "urn:uuid:a54219b8-f741-4c47-b662-e4f8dfa49ab6",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "active",
+              "status": "cancelled",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -83,8 +83,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy - Preparing Remainder"
+                                  "code": "0005",
+                                  "display": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -96,7 +96,7 @@
             "fullUrl": "urn:uuid:6989b7bd-8db6-428c-a593-4022e3044c00",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "active",
+              "status": "stopped",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -158,8 +158,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "Ready to Collect - Partial"
+                                  "code": "0002",
+                                  "display": "Not Dispensed"
                               }
                           }
                       ]
@@ -171,7 +171,7 @@
             "fullUrl": "urn:uuid:2868554c-5565-4d31-b92a-c5b8dab8b90a",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "active",
+              "status": "cancelled",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -233,8 +233,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "With Pharmacy"
+                                  "code": "0005",
+                                  "display": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -246,7 +246,7 @@
             "fullUrl": "urn:uuid:5cb17f5a-11ac-4e18-825f-6470467238b3",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "active",
+              "status": "stopped",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -308,8 +308,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0008",
-                                  "display": "Ready to Collect"
+                                  "code": "0002",
+                                  "display": "Not Dispensed"
                               }
                           }
                       ]
@@ -424,7 +424,7 @@
             "fullUrl": "urn:uuid:ee035711-7aac-48c4-951a-62c07891d37d",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "active",
+              "status": "cancelled",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -483,8 +483,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0001",
-                                  "display": "Prescriber Approved"
+                                  "code": "0005",
+                                  "display": "Prescriber Cancelled"
                               }
                           }
                       ]
@@ -563,7 +563,7 @@
             "fullUrl": "urn:uuid:5cb4600c-d758-42db-8091-16b030f6c00e",
             "resource": {
               "resourceType": "MedicationRequest",
-              "status": "completed",
+              "status": "stopped",
               "intent": "order",
               "medicationCodeableConcept": {
                 "coding": [
@@ -622,8 +622,8 @@
                               "url": "status",
                               "valueCoding": {
                                   "system": "https://fhir.nhs.uk/CodeSystem/task-businessStatus-nppt",
-                                  "code": "0003",
-                                  "display": "Dispatched"
+                                  "code": "0002",
+                                  "display": "Not Dispensed"
                               }
                           }
                       ]
