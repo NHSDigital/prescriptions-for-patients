@@ -16,12 +16,19 @@ description: |
     item and it's ready to collect.
   * 'Ready to Collect - Partial' means the prescription has been partially dispensed, but the remaining 
     medication is still with the pharmacy to prepare and dispense.
+  * 'Ready to Dispatch' means the prescription is in a holding area ready for collection by a delivery courier. 
+    This status will be set based on activity triggered by the pharmacy dispensing process. This might be the scanning 
+    of the prescription package bar code or another action performed only against those items when they are placed 
+    in a holding area.
+  * 'Ready to Dispatch - Partial' means the prescription is in a holding area ready for collection by a delivery courier. 
+    This status will be set based on activity triggered by the pharmacy dispensing process. This might be the scanning 
+    of the prescription package bar code or another action performed only against those items when they are placed 
+    in a holding area, but the full medication dosage isn't in stock.
   * 'Not Dispensed' means the prescription item has not been dispensed, which may be for a number of reasons 
     including the pharmacist deciding it's clinically unsuitable or the patient reporting side effects.
   * 'Dispatched' means the pharmacy has prepared the prescription item
     and it has been dispatched for delivery.
-  * 'Collected' means that the patient or patient carer has collected
-    the prescription item.
+  * 'Collected' means that the patient or patient carer has collected the prescription item.
 required: 
   - url
   - valueCoding
@@ -45,6 +52,8 @@ properties:
           - With Pharmacy - Preparing Remainder
           - Ready to Collect
           - Ready to Collect - Partial
+          - Ready to Dispatch
+          - Ready to Dispatch - Partial
           - Not Dispensed
           - Dispatched
           - Collected
