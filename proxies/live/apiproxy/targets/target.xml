@@ -74,6 +74,7 @@
 
   DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
    -->
+   <!--
   <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
@@ -81,5 +82,9 @@
     <LoadBalancer>
       <Server name="prescriptions-for-patients-eps" />
     </LoadBalancer>
+  </HTTPTargetConnection>
+  -->
+  <HTTPTargetConnection>
+    <URL>https://pfp-pr-793.dev.eps.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
