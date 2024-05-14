@@ -66,13 +66,19 @@
       </Step>
     </FaultRule>
   </FaultRules>
-  <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
+  <!-- 
+    Replace HTTPTargetConnection with this for testing to AWS pull requesst for old stack
 
   <HTTPTargetConnection>
-    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk</URL> - old stack
-    <URL>https://pfp-pr-[aws_pull_request_id].dev.eps.national.nhs.uk</URL> - new stack
+    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 
+    Replace HTTPTargetConnection with this for testing to AWS pull requesst for new stack
+  <HTTPTargetConnection>
+    <URL>https://pfp-pr-[aws_pull_request_id].dev.eps.national.nhs.uk</URL>
+  </HTTPTargetConnection>
+
+  
   DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
    -->
   <HTTPTargetConnection>
