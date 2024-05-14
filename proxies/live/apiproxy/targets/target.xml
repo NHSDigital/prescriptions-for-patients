@@ -69,12 +69,12 @@
   <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
 
   <HTTPTargetConnection>
-    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk</URL>
+    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk</URL> - old stack
+    <URL>https://pfp-pr-[aws_pull_request_id].dev.eps.national.nhs.uk</URL> - new stack
   </HTTPTargetConnection>
 
   DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
    -->
-   <!--
   <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>
@@ -82,9 +82,5 @@
     <LoadBalancer>
       <Server name="prescriptions-for-patients-eps" />
     </LoadBalancer>
-  </HTTPTargetConnection>
-  -->
-  <HTTPTargetConnection>
-    <URL>https://pr-793.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
