@@ -85,6 +85,6 @@
   </HTTPTargetConnection>
   -->
   <HTTPTargetConnection>
-    <URL>https://pfp-pr-793.dev.eps.national.nhs.uk</URL>
+    <URL>https://pr-793.dev.prescriptionsforpatients.national.nhs.uk</URL>
   </HTTPTargetConnection>
 </TargetEndpoint>
