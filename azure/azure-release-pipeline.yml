@@ -51,6 +51,7 @@ extends:
         post_deploy:
           - template: ./templates/run_tests.yml
         jinja_templates:
+          ALLOW_NHS_NUMBER_OVERRIDE: false
           TARGET_SERVER: prescriptions-for-patients
       - environment: internal-qa
         post_deploy:
@@ -77,6 +78,7 @@ extends:
           - internal_qa
           - int_manual_approval
         jinja_templates:
+          ALLOW_NHS_NUMBER_OVERRIDE: false
           TARGET_SERVER: prescriptions-for-patients
       - environment: int
         pre_deploy:
