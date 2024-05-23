@@ -79,7 +79,7 @@
       <Enabled>true</Enabled>
     </SSLInfo>
     <LoadBalancer>
-      <Server name={{TARGET_SERVER}} />
+      <Server name="{{TARGET_SERVER}}" />
     </LoadBalancer>
   </HTTPTargetConnection>
 </TargetEndpoint>
