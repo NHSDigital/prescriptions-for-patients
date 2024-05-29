@@ -11,15 +11,15 @@ resources:
       ref: refs/heads/edge
       endpoint: NHSDigital
   pipelines:
-  - pipeline: build_pipeline
-    source: "Prescriptions-For-Patients-Build"
-    trigger:
-      branches:
-        include:
-          - refs/tags/v*
+    - pipeline: build_pipeline
+      source: "Prescriptions-For-Patients-Build"
+      trigger:
+        branches:
+          include:
+            - refs/tags/v*
 
 pool:
-  name: 'AWS-ECS'
+  name: "AWS-ECS"
 
 variables:
   - template: project.yml
@@ -27,9 +27,9 @@ variables:
 extends:
   template: azure/common/apigee-deployment.yml@common
   parameters:
-    service_name: ${{ variables.service_name }} 
-    short_service_name: ${{ variables.short_service_name }} 
-    service_base_path: ${{ variables.service_base_path }} 
+    service_name: ${{ variables.service_name }}
+    short_service_name: ${{ variables.short_service_name }}
+    service_base_path: ${{ variables.service_base_path }}
     jinja_templates:
       ALLOW_NHS_NUMBER_OVERRIDE: false
     prod_producer_approval: true
@@ -72,7 +72,7 @@ extends:
           - ref_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
-          TARGET_SERVER: prescriptions-for-patients
+          TARGET_SERVER: prescriptions-for-patients-eps
       - environment: sandbox
         depends_on:
           - internal_qa
