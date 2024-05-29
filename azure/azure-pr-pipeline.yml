@@ -42,7 +42,11 @@ extends:
               full: true
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
+          TARGET_SERVER: prescriptions-for-patients-eps
       - environment: internal-dev-sandbox
         proxy_path: sandbox
         post_deploy:
           - template: ./templates/run_tests.yml
+        jinja_templates:
+          ALLOW_NHS_NUMBER_OVERRIDE: false
+          TARGET_SERVER: prescriptions-for-patients-eps
