@@ -11,7 +11,7 @@
            <Enabled>true</Enabled>
        </SSLInfo>
        <LoadBalancer>
-           <Server name="prescriptions-for-patients" />
+           <Server name="prescriptions-for-patients-eps" />
        </LoadBalancer>
        <Path>/_status</Path>
    </HTTPTargetConnection>
