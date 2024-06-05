@@ -19,7 +19,7 @@
            <Enabled>true</Enabled>
        </SSLInfo>
        <LoadBalancer>
-           <Server name="prescriptions-for-patients" />
+            <Server name="{{TARGET_SERVER}}" />
        </LoadBalancer>
        <Path>/_status</Path>
    </HTTPTargetConnection>
