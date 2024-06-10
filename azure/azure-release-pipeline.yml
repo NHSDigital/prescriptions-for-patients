@@ -64,7 +64,7 @@ extends:
           - qa_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
-          TARGET_SERVER: prescriptions-for-patients
+          TARGET_SERVER: prescriptions-for-patients-eps
       - environment: ref
         post_deploy:
           - template: ./templates/run_tests.yml
