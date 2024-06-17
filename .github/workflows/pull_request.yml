@@ -1,0 +1,12 @@
+name: deploy_pr
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
+
+jobs:
+  pr_title_format_check:
+    uses: ./.github/workflows/pr_title_check.yml
