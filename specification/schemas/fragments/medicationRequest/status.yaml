@@ -29,6 +29,7 @@ description: |
   * 'Dispatched' means the pharmacy has prepared the prescription item
     and it has been dispatched for delivery.
   * 'Collected' means that the patient or patient carer has collected the prescription item.
+  * 'Tracking Temporarily Unavailable' means that the system was temporarily unable to obtain the status update for the item.
 required: 
   - url
   - valueCoding
@@ -57,6 +58,7 @@ properties:
           - Not Dispensed
           - Dispatched
           - Collected
+          - Tracking Temporarily Unavailable
 
       system:
         type: string

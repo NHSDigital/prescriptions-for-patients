@@ -158,6 +158,10 @@ paths:
                   description: A successful response to a GetMyPrescriptions/Bundle request, where the performer organisation is a distance selling pharmacy.
                   value:
                     $ref: "examples/GetMyPrescriptions/Bundle/success/success-distance-selling.json"
+                tracking-temporarily-unavailable:
+                  description: A successful response to a GetMyPrescriptions/Bundle request, when tracking is temporarily unavailable.
+                  value:
+                    $ref: "examples/GetMyPrescriptions/Bundle/success/success-tracking-temporarily-unavailable.json"
 
         "4XX":
           description: |
