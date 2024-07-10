@@ -92,7 +92,7 @@ extends:
           - int_manual_approval
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: true
-          TARGET_SERVER: prescriptions-for-patients-eps
+          TARGET_SERVER: prescriptions-for-patients
       - environment: prod
         post_deploy:
           - template: ./templates/post_prod_deploy.yml
