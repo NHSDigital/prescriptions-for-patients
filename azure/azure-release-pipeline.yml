@@ -101,4 +101,4 @@ extends:
           - int
         jinja_templates:
           ALLOW_NHS_NUMBER_OVERRIDE: false
-          TARGET_SERVER: prescriptions-for-patients
+          TARGET_SERVER: prescriptions-for-patients-eps
