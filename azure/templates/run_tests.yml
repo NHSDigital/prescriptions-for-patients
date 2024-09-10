@@ -34,6 +34,21 @@ steps:
       inputs:
         testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/test-report.xml'
         failTaskOnFailedTests: true
+    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+      inputs:
+          repository: self
+          path: "$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/prescriptions-for-patients"
+          submodules: true
+      displayName: Checkout code
+        # Run the regression tests
+    - bash: |
+        if [[ "$(APIGEE_ENVIRONMENT)" != "prod" && "$(APIGEE_ENVIRONMENT)" != "ref" ]]; then
+          make install-python
+          echo Running in the $(APIGEE_ENVIRONMENT) environment
+          poetry run scripts/run_regression_tests.py --env=$(APIGEE_ENVIRONMENT) --pr_label=${PR_LABEL} --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+        fi
+      displayName: Regression Tests
+      condition: succeeded()
   - ${{ if not(parameters.full) }}:
     # In order to run tests in prod you must supply the unique ID of an Apigee app
     # that has authorized access to your service proxy.
@@ -52,18 +67,3 @@ steps:
       inputs:
         testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/smoketest-report.xml'
         failTaskOnFailedTests: true
-    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
-      inputs:
-          repository: self
-          path: "$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/prescriptions-for-patients"
-          submodules: true
-      displayName: Checkout code
-        # Run the regression tests
-    - bash: |
-        if [[ "$(APIGEE_ENVIRONMENT)" != "prod" && "$(APIGEE_ENVIRONMENT)" != "ref" ]]; then
-          make install-python
-          echo Running in the $(APIGEE_ENVIRONMENT) environment
-          poetry run scripts/run_regression_tests.py --env=$(APIGEE_ENVIRONMENT) --pr_label=${PR_LABEL} --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
-        fi
-      displayName: Regression Tests
-      condition: succeeded()
