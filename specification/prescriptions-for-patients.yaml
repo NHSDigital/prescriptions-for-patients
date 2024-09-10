@@ -81,6 +81,7 @@ info:
     | --------------------- | ---------------------------------------------------------------------------- |
     | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                  |
     | Production            | Not yet available                                                            |
+    | Sandbox               | `https://sandbox.api.service.nhs.uk/prescriptions-for-patients`              |
 
     ## Onboarding
     This API is not currently available to external third parties for onboarding.
@@ -101,10 +102,12 @@ x-spec-publication:
           path: /Bundle
 
 servers:
+  - url: "https://sandbox.api.service.nhs.uk/prescriptions-for-patients"
+    description: Sandbox Environment
   - url: "https://int.api.service.nhs.uk/prescriptions-for-patients"
-    description: "Integration"
+    description: Integration Environment
   - url: "https://api.service.nhs.uk/prescriptions-for-patients"
-    description: "Production"
+    description: Production Environment
 
 paths:
   /Bundle:
