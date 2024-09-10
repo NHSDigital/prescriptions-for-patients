@@ -103,11 +103,11 @@ x-spec-publication:
 
 servers:
   - url: "https://sandbox.api.service.nhs.uk/prescriptions-for-patients"
-    description: Sandbox Environment
+    description: Sandbox
   - url: "https://int.api.service.nhs.uk/prescriptions-for-patients"
-    description: Integration Environment
+    description: Integration
   - url: "https://api.service.nhs.uk/prescriptions-for-patients"
-    description: Production Environment
+    description: Production
 
 paths:
   /Bundle:
