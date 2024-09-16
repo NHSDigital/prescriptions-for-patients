@@ -3,6 +3,7 @@ See
 https://github.com/NHSDigital/pytest-nhsd-apim/blob/main/tests/test_examples.py
 for more ideas on how to test the authorization of your API.
 """
+
 import pytest
 import requests
 import uuid
@@ -16,13 +17,7 @@ import uuid
         "authentication": "separate",
     }
 )
-@pytest.mark.parametrize(
-        "x_request_id",
-        [
-            pytest.param("invalid"),
-            pytest.param("")
-        ]
-    )
+@pytest.mark.parametrize("x_request_id", [pytest.param("invalid"), pytest.param("")])
 def test_expected_content_type_headers_when_x_request_id_invalid(
     x_request_id, nhsd_apim_proxy_url, nhsd_apim_auth_headers
 ):
