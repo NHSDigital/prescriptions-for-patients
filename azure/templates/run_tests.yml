@@ -4,10 +4,10 @@ parameters:
     default: false
   - name: test_command
     type: string
-    default: 'make test'
+    default: "make test"
   - name: smoketest_command
     type: string
-    default: 'make smoketest'
+    default: "make smoketest"
 
 steps:
   - bash: |
@@ -17,53 +17,58 @@ steps:
     condition: always()
 
   - ${{ if parameters.full }}:
-    # In order to run tests in prod you must supply the unique ID of an Apigee app
-    # that has authorized access to your service proxy.
-    - bash: |
-        export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
-        export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
-        export APIGEE_APP_ID="MY APP ID"
-        export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
-        export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
-        ${{ parameters.test_command }}
-      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
-      displayName: Run full test suite
-    - task: PublishTestResults@2
-      displayName: 'Publish test results'
-      condition: always()
-      inputs:
-        testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/test-report.xml'
-        failTaskOnFailedTests: true
-    - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
-      inputs:
+      # In order to run tests in prod you must supply the unique ID of an Apigee app
+      # that has authorized access to your service proxy.
+      - bash: |
+          export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
+          export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
+          export APIGEE_APP_ID="MY APP ID"
+          export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
+          export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
+          ${{ parameters.test_command }}
+        workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+        displayName: Run full test suite
+      - task: PublishTestResults@2
+        displayName: "Publish test results"
+        condition: always()
+        inputs:
+          testResultsFiles: "$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/test-report.xml"
+          failTaskOnFailedTests: true
+      - task: 6d15af64-176c-496d-b583-fd2ae21d4df4@1
+        inputs:
           repository: self
           path: "$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/prescriptions-for-patients"
           submodules: true
-      displayName: Checkout code
-      # Run the regression tests
-    - bash: |
+        displayName: Checkout code
+        # Run the regression tests
+      - bash: |
           if [[ "$(APIGEE_ENVIRONMENT)" != "prod" && "$(APIGEE_ENVIRONMENT)" != "ref" ]]; then
             make install-python
             echo Running in the $(APIGEE_ENVIRONMENT) environment
-            poetry run scripts/run_regression_tests.py --env=$(APIGEE_ENVIRONMENT) --pr_label=${PR_LABEL} --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN)
+            poetry run scripts/run_regression_tests.py \
+            --env=$(APIGEE_ENVIRONMENT) \
+            --pr_label=${PR_LABEL} \
+            --user $(GITHUB_USER):$(GITHUB_ACCESS_TOKEN) \
+            --is_called_from_github false \
+            --product PFP-APIGEE
           fi
-      displayName: Regression Tests
-      condition: succeeded()
+        displayName: Regression Tests
+        condition: succeeded()
   - ${{ if not(parameters.full) }}:
-    # In order to run tests in prod you must supply the unique ID of an Apigee app
-    # that has authorized access to your service proxy.
-    - bash: |
-        export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
-        export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
-        export APIGEE_APP_ID="MY APP ID"
-        export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
-        export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
-        ${{ parameters.smoketest_command }}
-      workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
-      displayName: Run smoketests
-    - task: PublishTestResults@2
-      displayName: 'Publish smoketest results'
-      condition: always()
-      inputs:
-        testResultsFiles: '$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/smoketest-report.xml'
-        failTaskOnFailedTests: true
+      # In order to run tests in prod you must supply the unique ID of an Apigee app
+      # that has authorized access to your service proxy.
+      - bash: |
+          export PROXY_NAME="$(FULLY_QUALIFIED_SERVICE_NAME)"
+          export APIGEE_ACCESS_TOKEN="$(secret.AccessToken)"
+          export APIGEE_APP_ID="MY APP ID"
+          export STATUS_ENDPOINT_API_KEY="$(STATUS_ENDPOINT_API_KEY)"
+          export SOURCE_COMMIT_ID="$(Build.SourceVersion)"
+          ${{ parameters.smoketest_command }}
+        workingDirectory: $(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)
+        displayName: Run smoketests
+      - task: PublishTestResults@2
+        displayName: "Publish smoketest results"
+        condition: always()
+        inputs:
+          testResultsFiles: "$(Pipeline.Workspace)/s/$(SERVICE_NAME)/$(SERVICE_ARTIFACT_NAME)/smoketest-report.xml"
+          failTaskOnFailedTests: true
