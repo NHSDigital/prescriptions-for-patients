@@ -1,21 +1,13 @@
 [project]
 python = ">=3.8,<3.9.0 || >3.9.1,<4.0"
+name = "prescriptions-for-patients"
 
 [tool.poetry]
 name = "prescriptions-for-patients"
 version = "0.0.1-alpha"
 description = "TODO"
 authors = [
-    "Anthony Brown <anthony.brown8@nhs.net>",
-    "Matthew Popat <matthew.popat1@nhs.net>",
-    "Chris Matus <chris.matus@nhs.net>",
-    "Phil Gee <phil.gee@nhs.net>",
-    "Kris Szlapa <kris.szlapa1@nhs.net>",
-    "Jack Spagnoli <jack.spagnoli1@nhs.net>",
-    "Tom Smith <tom.smith24@nhs.net>",
-    "Adam Brown <adam.brown41@nhs.net>",
-    "Sean Steberis <sean.steberis2@nhs.net>",
-    "Kate.Bobyn <kate.bobyn2@nhs.net>"
+    "eps team"
 ]
 readme = 'README.md'
 license = "MIT"
