@@ -22,7 +22,7 @@ RUN wget -O /tmp/ssocli-bundle.zip https://login.apigee.com/resources/scripts/ss
 USER vscode
 
 # Install ASDF
-RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3; \
+RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.15.0; \
     echo '. $HOME/.asdf/asdf.sh' >> ~/.bashrc; \
     echo '. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc;
 
