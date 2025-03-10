@@ -5,6 +5,7 @@ name = "prescriptions-for-patients"
 [tool.poetry]
 name = "prescriptions-for-patients"
 version = "0.0.1-alpha"
+package-mode = false 
 description = "TODO"
 authors = [
     "eps team"
