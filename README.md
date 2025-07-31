@@ -2,10 +2,10 @@
 
 ![Build](https://github.com/NHSDigital/prescriptions-for-patients/workflows/Create%20Release/badge.svg?branch=master)
 
-This is a proxy code and specification for the *prescriptions-for-patients* API.   
-This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients.   
-The API returns prescriptions for the NHS number that the caller is authenticated with. In non production environments you can pass in a header called x-nhs-number to get details for an NHS number other than the one you are authenticated with.   
-Access to the API is restricted to authenticated NHS login OAuth V2 token.   
+This is a proxy code and specification for the *prescriptions-for-patients* API.
+This calls an AWS API that is defined at https://github.com/NHSDigital/prescriptionsforpatients.
+The API returns prescriptions for the NHS number that the caller is authenticated with. In non production environments you can pass in a header called x-nhs-number to get details for an NHS number other than the one you are authenticated with.
+Access to the API is restricted to authenticated NHS login OAuth V2 token.
 
 * `specification/` This [Open API Specification](https://swagger.io/docs/specification/about/) describes the endpoints, methods and messages exchanged by the API. Use it to generate interactive documentation; the contract between the API and its consumers.
 * `scripts/` Utilities helpful to developers of this specification.
@@ -27,8 +27,8 @@ This code is dual licensed under the MIT license and the OGL (Open Government Li
 The contents of this repository are protected by Crown Copyright (C).
 
 ## Development
-It is recommended that you use visual studio code and a devcontainer as this will install all necessary components and correct versions of tools and languages.  
-See https://code.visualstudio.com/docs/devcontainers/containers for details on how to set this up on your host machine.  
+It is recommended that you use visual studio code and a devcontainer as this will install all necessary components and correct versions of tools and languages.
+See https://code.visualstudio.com/docs/devcontainers/containers for details on how to set this up on your host machine.
 
 
 All commits must be made using [signed commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)
@@ -78,7 +78,7 @@ There are the `make` targets defined:
  * `mark-jira-released` -- calls mark jira released lambda to mark jira release as released
 
 ### Testing
-There are some basic end to end tests that run as part of the CI build. These just test _ping and _status and Bundle endpoint are working as expected.   
+There are some basic end to end tests that run as part of the CI build. These just test _ping and _status and Bundle endpoint are working as expected.
 To set up variables to run these tests from your machine use the following. You will be asked for your Apigee credentials that you use to log onto Apigee management web page
 ```
 export APIGEE_ACCESS_TOKEN=`SSO_LOGIN_URL=https://login.apigee.com get_token`
@@ -89,9 +89,9 @@ For testing a pull request you can set PROXY_NAME
 export PROXY_NAME=prescriptions-for-patients-pr-<GITHUB PULL REQUEST ID>
 ```
 
-You also need to set environment variable SOURCE_COMMIT_ID to the full commit id of the deployed proxy. You can get this using `git log` .   
+You also need to set environment variable SOURCE_COMMIT_ID to the full commit id of the deployed proxy. You can get this using `git log` .
 
-Now you can then run the tests using the following 
+Now you can then run the tests using the following
 ```
 make test
 ```
@@ -102,17 +102,17 @@ For more information about testing your API see the [API Producer Zone confluenc
 
 This folder contains workflows and templates related to github
 
-- `pull_request_template.yml`: Template for pull requests.   
+- `pull_request_template.yml`: Template for pull requests.
 
 `/.github/workflows`: This folder contains templates for github action workflows such as:
 - `pr-link.yaml`: This workflow template links Pull Requests to Jira tickets and runs when a pull request is opened.
 - `continuous-integration.yml`: This workflow template publishes a Github release when merged to master.
 - `dependabot.yml`: Dependabot definition file
-- `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests 
-- `create_int_release_notes.yml`: Workflow for creating int release notes. Called from azure pipeline 
-- `create_prod_release_notes.yml`: Workflow for creating prod release notes. Called from azure pipeline 
-- `create_rc_int_release_notes.yml`: Workflow for creating RC int release notes. Called from azure pipeline 
-- `mark_jira_released.yml`: Workflow for marking jira release as released. Called from azure pipeline 
+- `combine-dependabot-prs.yml`: Workflow for combining dependabot pull requests
+- `create_int_release_notes.yml`: Workflow for creating int release notes. Called from azure pipeline
+- `create_prod_release_notes.yml`: Workflow for creating prod release notes. Called from azure pipeline
+- `create_rc_int_release_notes.yml`: Workflow for creating RC int release notes. Called from azure pipeline
+- `mark_jira_released.yml`: Workflow for marking jira release as released. Called from azure pipeline
 
 #### `/azure`:
 
@@ -127,7 +127,7 @@ Contains templates defining Azure Devops pipelines. By default the following pip
 
 This folder contains files relating to the Apigee API proxy.
 
-There are 2 folders `/live` and `/sandbox` allowing you to define a different proxy for sandbox use. By default, this sandbox proxy is implemented to route to the sandbox target server 
+There are 2 folders `/live` and `/sandbox` allowing you to define a different proxy for sandbox use. By default, this sandbox proxy is implemented to route to the sandbox target server
 
 Within the `live/apiproxy` and `sandbox/apiproxy` folders are:
 
@@ -166,3 +166,4 @@ This file defines 2 dictionaries of fields that are required for the Apigee depl
 This template uses poetry for python dependency management, and uses these files: poetry.lock, poetry.toml, pyproject.toml.
 
 Node dependencies of this template project and some npm scripts are listed in: package.json, package-lock.json.
+
