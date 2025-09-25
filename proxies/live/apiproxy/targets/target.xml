@@ -13,13 +13,7 @@
           <Name>DecodeJWT.DecodeIdToken</Name>
         </Step>
         <Step>
-          <Name>AssignMessage.AddUserIdHeader</Name>
-        </Step>
-        <Step>
-          <Name>AssignMessage.AddIssuerHeader</Name>
-        </Step>
-        <Step>
-          <Name>AssignMessage.AddApplicationIdHeader</Name>
+          <Name>AssignMessage.AddApplicationNameHeader</Name>
         </Step>
         <Step>
           <Name>AssignMessage.AddPatientAccessHeader</Name>
