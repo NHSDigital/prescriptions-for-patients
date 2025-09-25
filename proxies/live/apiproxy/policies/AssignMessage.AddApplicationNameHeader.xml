@@ -1,0 +1,9 @@
+<AssignMessage async="false" continueOnError="false" enabled="true" name="AssignMessage.AddApplicationNameHeader">
+  <Add>
+      <Headers>
+          <Header name="NHSD-Application-Name">{apigee.developer.app.name}</Header>
+      </Headers>
+  </Add>
+  <IgnoreUnresolvedVariables>false</IgnoreUnresolvedVariables>
+  <AssignTo createNew="false" transport="http" type="request"/>
+</AssignMessage>
