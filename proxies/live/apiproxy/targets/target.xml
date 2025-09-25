@@ -13,6 +13,15 @@
           <Name>DecodeJWT.DecodeIdToken</Name>
         </Step>
         <Step>
+          <Name>AssignMessage.AddUserIdHeader</Name>
+        </Step>
+        <Step>
+          <Name>AssignMessage.AddIssuerHeader</Name>
+        </Step>
+        <Step>
+          <Name>AssignMessage.AddApplicationIdHeader</Name>
+        </Step>
+        <Step>
           <Name>AssignMessage.AddPatientAccessHeader</Name>
         </Step>
         {% if ALLOW_NHS_NUMBER_OVERRIDE %}
