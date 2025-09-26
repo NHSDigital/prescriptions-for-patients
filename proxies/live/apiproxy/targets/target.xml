@@ -76,7 +76,7 @@
   -->
 
   <HTTPTargetConnection>
-    <URL>https://pr-2078.dev.prescriptionsforpatients.national.nhs.uk</URL>
+    <URL>https://pfp-pr-2078.dev.eps.national.nhs.uk</URL>
   </HTTPTargetConnection>
 
   <!-- <HTTPTargetConnection>
