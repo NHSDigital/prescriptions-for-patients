@@ -20,7 +20,7 @@ keywords = ["healthcare", "uk", "nhs"] #TODO add additional keywords
 [tool.poetry.dependencies]
 python = "^3.8"
 pre-commit = "^3.5.0"
-pytest-nhsd-apim = "^5.0.5"
+pytest-nhsd-apim = "^5.0.6"
 
 [tool.poetry.scripts]
 
