@@ -1,0 +1,10 @@
+<AssignMessage name="AssignMessage.Add-Delegation-Headers">
+  <Add>
+    <Headers>
+      <Header name="X-NHSD-Delegated-Access">{nhsd.delegation.enabled}</Header> <!-- Only enable this header for opt-in -->
+      <Header name="X-NHSD-Subject-NHS-Number">{nhsd.subject.nhs_number}</Header> <!-- Do not enable -->
+      <Header name="X-NHSD-Actor-NHS-Number">{nhsd.actor.nhs_number}</Header> <!-- Do not enable -->
+      <Header name="X-NHSD-Delegation-Context">{nhsd.delegation.context_b64}</Header> <!-- Do not enable -->
+    </Headers>
+  </Add>
+</AssignMessage>
