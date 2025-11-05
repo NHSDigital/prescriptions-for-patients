@@ -18,6 +18,18 @@
         <Step>
           <Name>AssignMessage.AddPatientAccessHeader</Name>
         </Step>
+        <Step>
+          <Name>AssignMessage.EnableDelegatedAccess</Name>
+        </Step>
+        <Step>
+          <Name>javascript.DelegationGate</Name>
+        </Step>
+        <Step>
+          <Name>javascript.DelegationSetHeaders</Name>
+        </Step>
+        <Step>
+          <Name>AssignMessage.AddDelegationHeaders</Name>
+        </Step>
         {% if ALLOW_NHS_NUMBER_OVERRIDE %}
         <Step>
           <Name>AssignMessage.OverridePatientAccessHeader</Name>
