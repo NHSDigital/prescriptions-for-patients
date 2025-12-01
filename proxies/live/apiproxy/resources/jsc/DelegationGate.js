@@ -1,6 +1,6 @@
 // JS policy: DelegationGate.js
 var productOpt = context.getVariable('api.product.attribute.nhsd.delegated_access'); // from GetOAuthV2Info
-var proxyOpt   = context.getVariable('delegated-access.enabled') || 'false';
+var proxyOpt   = context.getVariable('delegatedaccess.enabled') || 'false';
 
 var effectiveOptIn = (String(productOpt).toLowerCase() === 'true') && (String(proxyOpt).toLowerCase() === 'true');
 context.setVariable('nhsd.delegation.enabled', effectiveOptIn);
