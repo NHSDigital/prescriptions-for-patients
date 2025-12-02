@@ -16,7 +16,7 @@ __pycache__/
 .venv/
 
 smoketest-report.xml
-env
+.env*
 .dir-locals.el
 *.pyc
 test-report.xml
