@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage.Enable-DelegatedAccess">
+<AssignMessage name="AssignMessage.EnableDelegatedAccess">
   <Set>
     <Properties>
       <Property name="delegatedaccess.enabled">true</Property>

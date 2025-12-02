@@ -1,4 +1,4 @@
-<AssignMessage name="AssignMessage.Add-Delegation-Headers">
+<AssignMessage name="AssignMessage.AddDelegationHeaders">
   <Add>
     <Headers>
       <Header name="X-NHSD-Delegated-Access">{nhsd.delegation.enabled}</Header> <!-- Only enable this header for opt-in -->
