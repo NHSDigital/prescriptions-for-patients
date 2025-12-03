@@ -1,10 +1,11 @@
 <AssignMessage name="AssignMessage.AddDelegationHeaders">
   <Add>
     <Headers>
-      <Header name="X-NHSD-Delegated-Access">{nhsd.delegation.enabled}</Header> <!-- Only enable this header for opt-in -->
-      <Header name="X-NHSD-Subject-NHS-Number">{nhsd.subject.nhs_number}</Header> <!-- Do not enable -->
-      <Header name="X-NHSD-Actor-NHS-Number">{nhsd.actor.nhs_number}</Header> <!-- Do not enable -->
-      <Header name="X-NHSD-Delegation-Context">{nhsd.delegation.context_b64}</Header> <!-- Do not enable -->
+      <Header name="X-NHSD-Delegated-Access">{nhsd.delegation.enabled}</Header>
+      <Header name="X-NHSD-Subject-NHS-Number">{nhsd.subject.nhs_number}</Header>
+      <!-- TODO: not required as already in NHSD-NHSLogin-User? -->
+      <Header name="X-NHSD-Actor-NHS-Number">{nhsd.actor.nhs_number}</Header>
+      <Header name="X-NHSD-Delegation-Context">{nhsd.delegation.context_b64}</Header>
     </Headers>
   </Add>
 </AssignMessage>
