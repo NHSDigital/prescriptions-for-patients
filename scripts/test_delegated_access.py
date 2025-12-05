@@ -178,12 +178,13 @@ def _get_access_token(apim_base_url, id_token, client_assert):
     return access_token
 
 
-def _get_patient_prescriptions(apim_base_url, access_token):
+def _get_patient_prescriptions(apim_base_url, access_token, pr=None):
     print("\n" + "="*80)
     print("STEP 8: Get Patient Prescriptions")
     print("="*80 + "\n")
 
-    prescriptions_url = f"{apim_base_url}/prescriptions-for-patients/Bundle"
+    suffix = f"-pr-{pr}" if pr else ""
+    prescriptions_url = f"{apim_base_url}/prescriptions-for-patients{suffix}/Bundle"
     id = str(uuid.uuid4())
     headers = {
         "Authorization": f"Bearer {access_token}",
@@ -191,7 +192,7 @@ def _get_patient_prescriptions(apim_base_url, access_token):
         "X-correlation-ID": id
     }
 
-    logger.debug(f"Requesting prescriptions from {prescriptions_url}")
+    logger.debug(f"Requesting prescriptions from {prescriptions_url}, x-request-id: {id}")
     response = requests.get(prescriptions_url, headers=headers)
     response.raise_for_status()
 
@@ -210,6 +211,7 @@ def main():
     API_KEY = os.environ.get("API_KEY")
     if not API_KEY:
         raise ValueError("❌ Please set API_KEY environment variable.")
+    PR = os.environ.get("PR")  # Optional
 
     try:
         client_creds = _get_client_creds(APIM_BASE_URL, API_KEY)  # KOP108 step 1
@@ -218,7 +220,7 @@ def main():
         id_token = _get_id_token(APIM_ID_BASE_URL, client_creds, code)  # KOP108 step 5
         client_assert = _get_client_assertion_jwt(APIM_BASE_URL, KID, API_KEY)  # KOP108 step 6
         access_token = _get_access_token(APIM_BASE_URL, id_token, client_assert)  # KOP108 step 7
-        _get_patient_prescriptions(APIM_BASE_URL, access_token)  # invoke PfP
+        _get_patient_prescriptions(APIM_BASE_URL, access_token, PR)  # invoke PfP
     except requests.exceptions.HTTPError as e:
         print(f"❌ HTTP error occurred: {e.response.status_code} - {e.response.text}")
 
