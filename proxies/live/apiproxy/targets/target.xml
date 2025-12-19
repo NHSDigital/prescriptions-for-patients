@@ -18,6 +18,18 @@
         <Step>
           <Name>AssignMessage.AddPatientAccessHeader</Name>
         </Step>
+        <Step>
+          <Name>AssignMessage.EnableDelegatedAccess</Name>
+        </Step>
+        <Step>
+          <Name>javascript.DelegationGate</Name>
+        </Step>
+        <Step>
+          <Name>javascript.DelegationSetHeaders</Name>
+        </Step>
+        <Step>
+          <Name>AssignMessage.AddDelegationHeaders</Name>
+        </Step>
         {% if ALLOW_NHS_NUMBER_OVERRIDE %}
         <Step>
           <Name>AssignMessage.OverridePatientAccessHeader</Name>
@@ -71,12 +83,11 @@
   </FaultRules>
   <!-- Replace HTTPTargetConnection with this for testing to AWS pull requesst
 
-  <HTTPTargetConnection>
-    <URL>https://pr-[aws_pull_request_id].dev.prescriptionsforpatients.national.nhs.uk</URL>
-  </HTTPTargetConnection>
-
   DO NOT MERGE WITH A CUSTOM HTTPTargetConnection
    -->
+  <HTTPTargetConnection>
+    <URL>https://pfp-pr-2147.dev.eps.national.nhs.uk</URL>
+  </HTTPTargetConnection>
   <HTTPTargetConnection>
     <SSLInfo>
       <Enabled>true</Enabled>

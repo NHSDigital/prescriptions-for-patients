@@ -1,0 +1,8 @@
+<AssignMessage name="AssignMessage.EnableDelegatedAccess">
+  <Set>
+    <Properties>
+      <Property name="delegatedaccess.enabled">true</Property>
+    </Properties>
+  </Set>
+  <IgnoreUnresolvedVariables>true</IgnoreUnresolvedVariables>
+</AssignMessage>
