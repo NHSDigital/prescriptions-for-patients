@@ -79,9 +79,9 @@ info:
     ## Environment and testing
     | Environment           | Base URL                                                                     |
     | --------------------- | ---------------------------------------------------------------------------- |
-    | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                  |
-    | Production            | Not yet available                                                            |
     | Sandbox               | `https://sandbox.api.service.nhs.uk/prescriptions-for-patients`              |
+    | Integration           | `https://int.api.service.nhs.uk/prescriptions-for-patients`                  |
+    | Production            | `https://api.service.nhs.uk/prescriptions-for-patients`                      |
 
     ## Onboarding
     Your software must be approved by us before you can begin the EPS onboarding process and go live with this FHIR API. EPS 'onboarding' is the term used for the development and assurance required before IT suppliers can offer EPS to NHS organisations.
